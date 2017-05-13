@@ -6,7 +6,7 @@ public class Pessoa {
 	boolean admin;
 	
 	void validaSenha (long matricula, String senha) {
-		// comparar com banco
+		
 	}
 	
 }
