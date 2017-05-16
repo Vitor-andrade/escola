@@ -5,15 +5,26 @@ import javax.swing.JFrame;
 import javax.swing.JButton;
 import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.JLabel;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import java.awt.Color;
+import java.awt.Font;
+import com.jgoodies.forms.factories.DefaultComponentFactory;
 
 public class loginUsuario {
 
 	private JFrame frame;
-	private JTextField textField;
+	private JTextField txtsdgadsfh;
 	private JPasswordField passwordField;
+	private JLabel lblRegistroAcadmico;
+	private JLabel lblSenha;
+	private JLabel lblLoginDeUsurio;
 
 	/**
 	 * Launch the application.
@@ -45,24 +56,76 @@ public class loginUsuario {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 492, 416);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
 		
 		JButton btnNewButton = new JButton("Log In");
+		btnNewButton.setBackground(Color.BLUE);
 		btnNewButton.addActionListener(new ActionListener() {
+			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent e) {
+				try {
+					if(Pessoa.validaSenha(txtsdgadsfh.getText(), passwordField.getText())==true){
+						
+					}
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
 			}
 		});
-		btnNewButton.setBounds(181, 281, 94, 29);
-		frame.getContentPane().add(btnNewButton);
 		
-		textField = new JTextField();
-		textField.setBounds(134, 120, 197, 29);
-		frame.getContentPane().add(textField);
-		textField.setColumns(10);
+		txtsdgadsfh = new JTextField();
+		txtsdgadsfh.setBackground(Color.LIGHT_GRAY);
+		txtsdgadsfh.setColumns(10);
 		
 		passwordField = new JPasswordField();
-		passwordField.setText("5445");
-		passwordField.setBounds(134, 202, 197, 20);
-		frame.getContentPane().add(passwordField);
+		passwordField.setBackground(Color.LIGHT_GRAY);
+		
+		lblRegistroAcadmico = new JLabel("Registro Acad\u00EAmico");
+		lblRegistroAcadmico.setFont(new Font("Arial", Font.PLAIN, 13));
+		
+		lblSenha = new JLabel("Senha");
+		lblSenha.setFont(new Font("Arial", Font.PLAIN, 13));
+		lblSenha.setForeground(Color.BLACK);
+		
+		lblLoginDeUsurio = new JLabel("Login de Usu\u00E1rio");
+		lblLoginDeUsurio.setFont(new Font("Arial", Font.BOLD, 20));
+		lblLoginDeUsurio.setBackground(Color.LIGHT_GRAY);
+		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
+		groupLayout.setHorizontalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(181)
+							.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 94, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(134)
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addComponent(lblSenha)
+								.addComponent(passwordField, GroupLayout.PREFERRED_SIZE, 197, GroupLayout.PREFERRED_SIZE)))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(134)
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+								.addComponent(txtsdgadsfh, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
+								.addComponent(lblLoginDeUsurio)
+								.addComponent(lblRegistroAcadmico))))
+					.addContainerGap(145, Short.MAX_VALUE))
+		);
+		groupLayout.setVerticalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(39)
+					.addComponent(lblLoginDeUsurio)
+					.addGap(67)
+					.addComponent(lblRegistroAcadmico)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(txtsdgadsfh, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
+					.addGap(24)
+					.addComponent(lblSenha)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(passwordField, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
+					.addGap(59)
+					.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE))
+		);
+		frame.getContentPane().setLayout(groupLayout);
 	}
 }

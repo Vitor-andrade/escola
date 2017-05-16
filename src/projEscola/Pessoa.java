@@ -1,5 +1,7 @@
 package projEscola;
 
+import java.sql.SQLException;
+
 public class Pessoa {
 
 	long matricula;
@@ -7,8 +9,8 @@ public class Pessoa {
 	String nome;
 	boolean admin;
 	
-	void validaSenha (long matricula, String senha) {
-		
+	static boolean validaSenha (String matricula, String senha) throws SQLException {
+		return pessoaBD.validaSenha(matricula, senha);
 	}
 	
 }
