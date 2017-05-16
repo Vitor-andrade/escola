@@ -7,11 +7,13 @@ import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
+import javax.swing.JPasswordField;
 
-public class paginaDeLogin {
+public class loginUsuario {
 
 	private JFrame frame;
 	private JTextField textField;
+	private JPasswordField passwordField;
 
 	/**
 	 * Launch the application.
@@ -20,7 +22,7 @@ public class paginaDeLogin {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					paginaDeLogin window = new paginaDeLogin();
+					loginUsuario window = new loginUsuario();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -32,7 +34,7 @@ public class paginaDeLogin {
 	/**
 	 * Create the application.
 	 */
-	public paginaDeLogin() {
+	public loginUsuario() {
 		initialize();
 	}
 
@@ -50,12 +52,17 @@ public class paginaDeLogin {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNewButton.setBounds(198, 279, 94, 29);
+		btnNewButton.setBounds(181, 281, 94, 29);
 		frame.getContentPane().add(btnNewButton);
 		
 		textField = new JTextField();
 		textField.setBounds(134, 120, 197, 29);
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
+		
+		passwordField = new JPasswordField();
+		passwordField.setText("5445");
+		passwordField.setBounds(134, 202, 197, 20);
+		frame.getContentPane().add(passwordField);
 	}
 }
