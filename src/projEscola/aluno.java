@@ -1,3 +1,4 @@
+package projEscola;
 
 public class aluno extends Pessoa {
 

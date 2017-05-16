@@ -1,3 +1,5 @@
+package projEscola;
+
 public class Pessoa {
 
 	long matricula;
