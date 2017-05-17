@@ -85,7 +85,7 @@ public class cadastroDeMatricula {
 		scrollPane_2.setViewportView(list);
 		
 		JTextPane txtpnCadastro = new JTextPane();
-		txtpnCadastro.setFont(new Font("Arial", Font.PLAIN, 20));
+		txtpnCadastro.setFont(new Font("Arial", Font.BOLD, 20));
 		txtpnCadastro.setText("Cadastro");
 		txtpnCadastro.setBounds(330, 27, 271, 53);
 		frame.getContentPane().add(txtpnCadastro);
