@@ -1,13 +1,17 @@
 package projEscola;
 
+import java.sql.SQLException;
+
 public class Disciplina {
 	String disciplina;
 	
-	void getDisciplina () {
+	String[] getDisciplina (String curso) {
+		return null;
 		
 	}
 	
-	void setDisciplina (String curso){
+	static void setDisciplina (String matricula, String curso, String disciplina) throws SQLException {
+		disciplinaBD.setDisciplina (matricula,  curso,  disciplina);
 		
 	}
 }

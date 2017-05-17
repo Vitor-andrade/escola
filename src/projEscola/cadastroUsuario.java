@@ -21,7 +21,7 @@ public class cadastroUsuario {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void cadastraUsuario() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -91,6 +91,8 @@ public class cadastroUsuario {
 		frame.getContentPane().add(lblNome);
 		
 		JLabel lblCadastroDeUsurio = new JLabel("Cadastro de Usu\u00E1rio");
+		lblCadastroDeUsurio.setForeground(Color.BLACK);
+		lblCadastroDeUsurio.setBackground(Color.LIGHT_GRAY);
 		lblCadastroDeUsurio.setFont(new Font("Arial", Font.BOLD, 20));
 		lblCadastroDeUsurio.setBounds(116, 35, 205, 14);
 		frame.getContentPane().add(lblCadastroDeUsurio);

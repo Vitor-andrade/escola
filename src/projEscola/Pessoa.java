@@ -9,8 +9,7 @@ public class Pessoa {
 	String nome;
 	boolean admin;
 	
-	static boolean validaSenha (String matricula, String senha) throws SQLException {
+	static int validaSenha (String matricula, String senha) throws SQLException {
 		return pessoaBD.validaSenha(matricula, senha);
 	}
-	
 }

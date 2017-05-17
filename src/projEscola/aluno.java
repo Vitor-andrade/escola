@@ -1,18 +1,14 @@
 package projEscola;
 
+import java.sql.SQLException;
+
 public class aluno extends Pessoa {
 
-	void finalizaCadastro (String curso, String disciplina, String turma) {
-		// insere dados no banco
-		
-		
+	static void finalizaCadastro (String matriculaP, String matriculaA, String curso, String[] disciplina) throws SQLException {
+		alunoBD.finalizaCadastro(matriculaP, matriculaA, curso, disciplina);
 	}
 	
-	
-	void setAluno (boolean admin, long matricula, String senha, String nome) {
-		//toma mais
-		
-		
+	static void setAluno (String matricula, String senha, String nome) throws SQLException {
+		alunoBD.setAluno (matricula,senha,nome);
 	}
-	
 }

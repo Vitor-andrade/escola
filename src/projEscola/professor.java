@@ -1,9 +1,11 @@
 package projEscola;
 
+import java.sql.SQLException;
+
 public class professor extends Pessoa {
 	
-	void setProfessor (boolean admin, long matricula, String senha, String nome){
-		
+	static void setProfessor (String matricula, String senha, String nome)throws SQLException {
+		professorBD.setProfessor (matricula,senha,nome);
 	}
 
 }
