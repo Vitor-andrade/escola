@@ -9,7 +9,11 @@ public class Pessoa {
 	String nome;
 	boolean admin;
 	
-	static int validaSenha (String matricula, String senha) throws SQLException {
-		return pessoaBD.validaSenha(matricula, senha);
+	static boolean validaSenha (String matricula, String senha) throws SQLException {
+		return new pessoaBD().validaSenha(matricula, senha);
+	}
+	
+	static int getPerfilUsuario(String matricula) throws SQLException{
+		return new pessoaBD().getPerfilUsuario(matricula);
 	}
 }

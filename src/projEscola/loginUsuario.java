@@ -63,17 +63,16 @@ public class loginUsuario {
 			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent e) {
 				try {
-					if(Pessoa.validaSenha(txtsdgadsfh.getText(), passwordField.getText())==0){
-						cadastroUsuario.cadastraUsuario();
-					}
-					if(Pessoa.validaSenha(txtsdgadsfh.getText(), passwordField.getText())==1){
-						cadastroUsuario.cadastraUsuario();
-					}
-					if(Pessoa.validaSenha(txtsdgadsfh.getText(), passwordField.getText())==2){
-						cadastroUsuario.cadastraUsuario();
-					}
-					if(Pessoa.validaSenha(txtsdgadsfh.getText(), passwordField.getText())==3){
-						cadastroUsuario.cadastraUsuario();
+					if(Pessoa.validaSenha(txtsdgadsfh.getText(), passwordField.getText())){
+						if(Pessoa.getPerfilUsuario(txtsdgadsfh.getText())==1){
+							bemVindoProfessor.bemVindoProfessor();
+						}
+						if(Pessoa.getPerfilUsuario(txtsdgadsfh.getText())==2){
+							BemVindoAlunop.BemVindoAlunop();
+						}
+						if(Pessoa.getPerfilUsuario(txtsdgadsfh.getText())==3){
+							cadastroUsuario.cadastraUsuario();
+						}
 					}
 				} catch (Exception e1) {
 					e1.printStackTrace();

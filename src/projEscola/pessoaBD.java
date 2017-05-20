@@ -6,37 +6,39 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import servicos.ConexaoBanco;
+
 public class pessoaBD {
 	
 	static String host = "127.0.0.1";
 	static int port = 3306;
 	static String dbName = "escola";
 	static String url = "jdbc:mysql://" + host + ":" + port + "/" + dbName;
-	
+	static ConexaoBanco conexao;
 	static Connection con = null;
 	static PreparedStatement stmt = null;
 	
-	static int validaSenha (String matricula, String senha) throws SQLException {
-		con = DriverManager.getConnection(url, "root","");
-		stmt = con.prepareStatement("select x.matricula, x.senha, x.pessoa from escola.pessoas x");
-		ResultSet result = stmt.executeQuery();
+	public pessoaBD(){
+		this.conexao = ConexaoBanco.getInstance();
+		this.con = conexao.getConexao();
+	}
+	
+	public boolean validaSenha (String matricula, String senha) throws SQLException {
 		
-		while(result.next()) {
-			if(result.getString("matricula")==matricula){
-				if(result.getString("senha")==senha){
-					if(result.getInt("pessoa")==1){
-						return 1;
-					}
-					if(result.getInt("pessoa")==2){
-						return 2;
-					}
-					if(result.getInt("pessoa")==3){
-						return 3;
-					}
-				}
-				return 0;
-			}
-		}
-		return 0;
+		stmt = this.con.prepareStatement("select x.matricula, x.senha, x.pessoa from escola.pessoas x where x.matricula ='"+matricula+
+				"' and x.senha='"+ senha + "'");
+		ResultSet result = stmt.executeQuery();
+		if(result.next() == true)
+			return true;
+		else
+			return false;
+		
+	}
+	
+	public int getPerfilUsuario(String matricula) throws SQLException{
+		stmt = this.con.prepareStatement("select x.pessoa from escola.pessoas x where x.matricula ='"+matricula+"'" );
+		ResultSet result = stmt.executeQuery();
+		result.next();
+		return result.getInt("pessoa");
 	}
 }

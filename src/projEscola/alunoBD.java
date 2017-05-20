@@ -6,18 +6,25 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import servicos.ConexaoBanco;
+
 public class alunoBD {
 	
 	static String host = "127.0.0.1";
 	static int port = 3306;
 	static String dbName = "escola";
 	static String url = "jdbc:mysql://" + host + ":" + port + "/" + dbName;
-	
+	static ConexaoBanco conexao;
 	static Connection con = null;
 	static PreparedStatement stmt = null;
 	
+	public alunoBD(){
+		this.conexao = ConexaoBanco.getInstance();
+		this.con = conexao.getConexao();
+	}
+	
 	static void finalizaCadastro (String matriculaP, String matriculaA, String curso, String[] disciplina) throws SQLException {
-		con = DriverManager.getConnection(url, "user", "password");
+
 		stmt = con.prepareStatement("select * from escola.materias");
 		ResultSet result = stmt.executeQuery();
 		result.afterLast();
@@ -33,8 +40,8 @@ public class alunoBD {
 	}
 	
 	static void setAluno (String matricula , String senha, String nome) throws SQLException {
-		con = DriverManager.getConnection(url, "user", "password");
-		stmt = con.prepareStatement("select * from escola.pessoas");
+
+		stmt = con.prepareStatement("select x.* from escola.pessoas x");
 		ResultSet result = stmt.executeQuery();
 		result.afterLast();
 		result.previous();
@@ -42,6 +49,6 @@ public class alunoBD {
 		
 		stmt = con.prepareStatement("INSERT INTO escola.pessoas (id, matricula, senha, nome , pessoa)"
 				  + " VALUES ("+x+", '"+matricula+"', '"+senha+"' , '"+nome+"', '2')");
-		stmt.executeQuery();
+		stmt.executeUpdate();
 	}
 }

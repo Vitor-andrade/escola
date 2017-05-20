@@ -19,7 +19,7 @@ public class bemVindoProfessor {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void bemVindoProfessor() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {

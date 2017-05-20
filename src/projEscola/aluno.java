@@ -9,6 +9,6 @@ public class aluno extends Pessoa {
 	}
 	
 	static void setAluno (String matricula, String senha, String nome) throws SQLException {
-		alunoBD.setAluno (matricula,senha,nome);
+		new alunoBD().setAluno(matricula,senha,nome);
 	}
 }
