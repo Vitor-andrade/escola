@@ -56,12 +56,6 @@ public class BemVindoAlunop {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JTextArea txtrBemVindoAluno = new JTextArea();
-		txtrBemVindoAluno.setFont(new Font("Arial", Font.BOLD, 20));
-		txtrBemVindoAluno.setText("Bem vindo Aluno!");
-		txtrBemVindoAluno.setBounds(308, 45, 171, 32);
-		frame.getContentPane().add(txtrBemVindoAluno);
-		
 		JButton btnNewButton = new JButton("Log Out");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -93,5 +87,10 @@ public class BemVindoAlunop {
 		
 		JScrollBar scrollBar = new JScrollBar();
 		scrollPane_1.setRowHeaderView(scrollBar);
+		
+		JLabel lblBemVindoAluno = new JLabel("Bem Vindo, Aluno!");
+		lblBemVindoAluno.setFont(new Font("Arial", Font.BOLD, 20));
+		lblBemVindoAluno.setBounds(275, 25, 218, 46);
+		frame.getContentPane().add(lblBemVindoAluno);
 	}
 }

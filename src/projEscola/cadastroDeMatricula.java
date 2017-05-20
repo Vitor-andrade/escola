@@ -84,12 +84,6 @@ public class cadastroDeMatricula {
 		JList list = new JList();
 		scrollPane_2.setViewportView(list);
 		
-		JTextPane txtpnCadastro = new JTextPane();
-		txtpnCadastro.setFont(new Font("Arial", Font.BOLD, 20));
-		txtpnCadastro.setText("Cadastro");
-		txtpnCadastro.setBounds(330, 27, 271, 53);
-		frame.getContentPane().add(txtpnCadastro);
-		
 		JButton btnNewButton = new JButton("Cadastrar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -115,5 +109,10 @@ public class cadastroDeMatricula {
 		label.setFont(new Font("Arial", Font.PLAIN, 13));
 		label.setLabelFor(scrollPane_1);
 		label.setVerticalAlignment(SwingConstants.BOTTOM);
+		
+		JLabel lblCadastro = new JLabel("Cadastro");
+		lblCadastro.setFont(new Font("Arial", Font.BOLD, 20));
+		lblCadastro.setBounds(332, 11, 216, 53);
+		frame.getContentPane().add(lblCadastro);
 	}
 }

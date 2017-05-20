@@ -12,13 +12,15 @@ import java.awt.Component;
 import javax.swing.Box;
 import javax.swing.JButton;
 import java.awt.Color;
+import javax.swing.JTable;
 
 public class cadastroTurma {
 
 	private JFrame frame;
-	private JTextField txtCadastroDeTurma;
 	private JTextField textField;
 	private JTextField textField_1;
+	private JTable tableCurso;
+	private JTable tableDisciplina;
 
 	/**
 	 * Launch the application.
@@ -52,13 +54,6 @@ public class cadastroTurma {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		txtCadastroDeTurma = new JTextField();
-		txtCadastroDeTurma.setFont(new Font("Arial", Font.BOLD, 20));
-		txtCadastroDeTurma.setText("Cadastro de Turma");
-		txtCadastroDeTurma.setBounds(333, 38, 191, 53);
-		frame.getContentPane().add(txtCadastroDeTurma);
-		txtCadastroDeTurma.setColumns(10);
-		
 		JLabel lblCurso = new JLabel("Curso");
 		lblCurso.setFont(new Font("Arial", Font.BOLD, 13));
 		lblCurso.setBounds(68, 113, 46, 14);
@@ -68,20 +63,6 @@ public class cadastroTurma {
 		lblDisciplina.setFont(new Font("Arial", Font.BOLD, 13));
 		lblDisciplina.setBounds(619, 114, 62, 14);
 		frame.getContentPane().add(lblDisciplina);
-		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(67, 127, 168, 209);
-		frame.getContentPane().add(scrollPane);
-		
-		JScrollBar scrollBar = new JScrollBar();
-		scrollPane.setRowHeaderView(scrollBar);
-		
-		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(619, 127, 168, 209);
-		frame.getContentPane().add(scrollPane_1);
-		
-		JScrollBar scrollBar_1 = new JScrollBar();
-		scrollPane_1.setRowHeaderView(scrollBar_1);
 		
 		Component horizontalStrut = Box.createHorizontalStrut(20);
 		horizontalStrut.setBounds(288, 163, 236, 1);
@@ -112,5 +93,18 @@ public class cadastroTurma {
 		btnCadastrar.setForeground(Color.BLACK);
 		btnCadastrar.setBounds(698, 446, 89, 23);
 		frame.getContentPane().add(btnCadastrar);
+		
+		JLabel lblCadastroDeTurma = new JLabel("Cadastro de Turma");
+		lblCadastroDeTurma.setFont(new Font("Arial", Font.BOLD, 20));
+		lblCadastroDeTurma.setBounds(288, 21, 206, 85);
+		frame.getContentPane().add(lblCadastroDeTurma);
+		
+		tableCurso = new JTable();
+		tableCurso.setBounds(63, 138, 183, 192);
+		frame.getContentPane().add(tableCurso);
+		//http://stackoverflow.com/questions/10620448/most-simple-code-to-populate-jtable-from-resultset
+		tableDisciplina = new JTable();
+		tableDisciplina.setBounds(576, 138, 183, 191);
+		frame.getContentPane().add(tableDisciplina);
 	}
 }

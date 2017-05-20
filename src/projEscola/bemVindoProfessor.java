@@ -14,7 +14,6 @@ import java.awt.Button;
 public class bemVindoProfessor {
 
 	private JFrame frame;
-	private JTextField txtBemVindoProfessor;
 
 	/**
 	 * Launch the application.
@@ -44,17 +43,10 @@ public class bemVindoProfessor {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.getContentPane().setFont(new Font("Arial", Font.BOLD, 20));
 		frame.setBounds(100, 100, 807, 488);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		
-		txtBemVindoProfessor = new JTextField();
-		txtBemVindoProfessor.setForeground(Color.BLACK);
-		txtBemVindoProfessor.setFont(new Font("Arial", Font.BOLD, 20));
-		txtBemVindoProfessor.setText("Bem Vindo Professor!");
-		txtBemVindoProfessor.setBounds(244, 32, 214, 56);
-		frame.getContentPane().add(txtBemVindoProfessor);
-		txtBemVindoProfessor.setColumns(10);
 		
 		JLabel lblDados = new JLabel("Dados");
 		lblDados.setBounds(47, 132, 171, 40);
@@ -79,5 +71,10 @@ public class bemVindoProfessor {
 		button.setForeground(Color.BLACK);
 		button.setBounds(694, 417, 87, 22);
 		frame.getContentPane().add(button);
+		
+		JLabel lblBemVindoProfessor = new JLabel("Bem Vindo, Professor!");
+		lblBemVindoProfessor.setFont(new Font("Arial", Font.BOLD, 20));
+		lblBemVindoProfessor.setBounds(244, 25, 244, 74);
+		frame.getContentPane().add(lblBemVindoProfessor);
 	}
 }
