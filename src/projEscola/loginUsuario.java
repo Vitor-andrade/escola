@@ -72,7 +72,7 @@ public class loginUsuario {
 							if(aluno.validaUsuario(txtsdgadsfh.getText())){
 								BemVindoAlunop.BemVindoAlunop();
 							}else{
-								cadastroTurma.cadastroTurma();
+								cadastroDeMatricula.cadastroDeMatricula();
 							}
 						} else if(Pessoa.getPerfilUsuario(txtsdgadsfh.getText())==3){
 							// Adminitrador Autorizado

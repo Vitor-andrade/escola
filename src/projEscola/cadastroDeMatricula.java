@@ -27,14 +27,12 @@ import javax.swing.JTable;
 public class cadastroDeMatricula {
 
 	private JFrame frame;
-	private JTable disciplina;
-	private JTable curso;
 	private JTable Turma;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void cadastroDeMatricula() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -68,7 +66,7 @@ public class cadastroDeMatricula {
 		scrollPane.setBounds(330, 145, 151, 233);
 		frame.getContentPane().add(scrollPane);
 		
-		disciplina = new JTable();
+		JList disciplina = new JList();
 		scrollPane.setViewportView(disciplina);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
@@ -83,7 +81,7 @@ public class cadastroDeMatricula {
 		frame.getContentPane().add(scrollPane_2);
 		scrollPane_2.setToolTipText("oi\r\n");
 		
-		curso = new JTable();
+		JList curso = new JList();
 		scrollPane_2.setViewportView(curso);
 		
 		JButton btnNewButton = new JButton("Cadastrar");
@@ -111,14 +109,15 @@ public class cadastroDeMatricula {
 		label.setFont(new Font("Arial", Font.PLAIN, 13));
 		label.setLabelFor(scrollPane_1);
 		
+		JList turmaa;
 		try {
-			Turma = new JTable(turma.buscaTurmaCadastro());
+			turmaa = new JList(turma.buscaTurmaCadastro());
+			scrollPane_1.setViewportView(turmaa);
+			label.setVerticalAlignment(SwingConstants.BOTTOM);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		scrollPane_1.setViewportView(Turma);
-		label.setVerticalAlignment(SwingConstants.BOTTOM);
 		
 		JLabel lblCadastro = new JLabel("Cadastro");
 		lblCadastro.setFont(new Font("Arial", Font.BOLD, 20));

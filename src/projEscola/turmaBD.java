@@ -28,13 +28,17 @@ public class turmaBD {
 		this.con = conexao.getConexao();
 	}
 	
-	public DefaultTableModel buscaTurmaCadastro() throws SQLException {
+	public Vector buscaTurmaCadastro() throws SQLException {
 		
 		stmt = this.con.prepareStatement("select x.turma from escola.materias x");
 		ResultSet result = stmt.executeQuery();
 	    ResultSetMetaData metaData = (ResultSetMetaData) result.getMetaData();
+	 // Cabeçário
 	    Vector<String> columnNames = new Vector<String>();
 	    int columnCount = metaData.getColumnCount();
+	    for (int column = 1; column <= columnCount; column++) {
+	        columnNames.add(metaData.getColumnName(column));
+	    }
 
 	    // Data
 	    Vector<Vector<Object>> data = new Vector<Vector<Object>>();
@@ -46,7 +50,7 @@ public class turmaBD {
 	        data.add(vector);
 	    }
 
-	    return new DefaultTableModel(data, columnNames);
+	    return data;
 
 	}
 }

@@ -13,11 +13,14 @@ import java.awt.Font;
 import javax.swing.JPasswordField;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 public class cadastroUsuario {
 
 	private JFrame frame;
 	private JPasswordField senha;
+	private JTextField nome;
+	private JTextField matricula;
 
 	/**
 	 * Launch the application.
@@ -61,20 +64,10 @@ public class cadastroUsuario {
 		lblSenha.setBounds(116, 190, 74, 14);
 		frame.getContentPane().add(lblSenha);
 		
-		JTextArea matricula = new JTextArea();
-		matricula.setBackground(Color.LIGHT_GRAY);
-		matricula.setBounds(116, 156, 195, 23);
-		frame.getContentPane().add(matricula);
-		
 		JLabel lblNewLabel = new JLabel("Matr\u00EDcula");
 		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 13));
 		lblNewLabel.setBounds(116, 141, 74, 14);
 		frame.getContentPane().add(lblNewLabel);
-		
-		JTextArea nome = new JTextArea();
-		nome.setBackground(Color.LIGHT_GRAY);
-		nome.setBounds(116, 108, 195, 22);
-		frame.getContentPane().add(nome);
 		
 		JLabel lblNome = new JLabel("Nome");
 		lblNome.setFont(new Font("Arial", Font.PLAIN, 13));
@@ -103,5 +96,15 @@ public class cadastroUsuario {
 		btnNewButton.setBackground(Color.BLUE);
 		btnNewButton.setFont(new Font("Arial", Font.PLAIN, 13));
 		frame.getContentPane().add(btnNewButton);
+		
+		nome = new JTextField();
+		nome.setBounds(116, 110, 195, 20);
+		frame.getContentPane().add(nome);
+		nome.setColumns(10);
+		
+		matricula = new JTextField();
+		matricula.setBounds(116, 159, 195, 20);
+		frame.getContentPane().add(matricula);
+		matricula.setColumns(10);
 	}
 }
