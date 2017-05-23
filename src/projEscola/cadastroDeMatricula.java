@@ -20,11 +20,16 @@ import javax.swing.JList;
 import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
+import javax.swing.JTable;
 
 public class cadastroDeMatricula {
 
 	private JFrame frame;
+	private JTable disciplina;
+	private JTable curso;
+	private JTable Turma;
 
 	/**
 	 * Launch the application.
@@ -63,16 +68,13 @@ public class cadastroDeMatricula {
 		scrollPane.setBounds(330, 145, 151, 233);
 		frame.getContentPane().add(scrollPane);
 		
-		JList list_1 = new JList();
-		scrollPane.setViewportView(list_1);
+		disciplina = new JTable();
+		scrollPane.setViewportView(disciplina);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
 		scrollPane_1.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPane_1.setBounds(588, 145, 151, 233);
 		frame.getContentPane().add(scrollPane_1);
-		
-		JList list_2 = new JList();
-		scrollPane_1.setViewportView(list_2);
 		
 		JScrollPane scrollPane_2 = new JScrollPane();
 		scrollPane_2.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
@@ -81,8 +83,8 @@ public class cadastroDeMatricula {
 		frame.getContentPane().add(scrollPane_2);
 		scrollPane_2.setToolTipText("oi\r\n");
 		
-		JList list = new JList();
-		scrollPane_2.setViewportView(list);
+		curso = new JTable();
+		scrollPane_2.setViewportView(curso);
 		
 		JButton btnNewButton = new JButton("Cadastrar");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -108,6 +110,14 @@ public class cadastroDeMatricula {
 		frame.getContentPane().add(label);
 		label.setFont(new Font("Arial", Font.PLAIN, 13));
 		label.setLabelFor(scrollPane_1);
+		
+		try {
+			Turma = new JTable(turma.buscaTurmaCadastro());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		scrollPane_1.setViewportView(Turma);
 		label.setVerticalAlignment(SwingConstants.BOTTOM);
 		
 		JLabel lblCadastro = new JLabel("Cadastro");
