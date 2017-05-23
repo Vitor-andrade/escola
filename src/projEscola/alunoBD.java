@@ -52,10 +52,9 @@ public class alunoBD {
 		stmt.executeUpdate();
 	}
 	
-	public boolean validaUsuario(String matricula, String senha, String nome) throws SQLException {
+	public boolean validaUsuario(String matricula) throws SQLException {
 
-		stmt = this.con.prepareStatement("select x.matricula, x.senha, x.pessoa from escola.materias x where x.matricula ='"+matricula+
-				"' and x.senha='"+ senha + "'");
+		stmt = this.con.prepareStatement("select * from escola.materias x where x.matriculaA ='"+matricula+"'");
 		ResultSet result = stmt.executeQuery();
 		if(result.next() == true)
 			return true;

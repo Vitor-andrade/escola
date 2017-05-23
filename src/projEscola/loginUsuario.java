@@ -19,7 +19,7 @@ import com.jgoodies.forms.factories.DefaultComponentFactory;
 
 public class loginUsuario {
 
-	private JFrame frame;
+	private static JFrame frame;
 	private JTextField txtsdgadsfh;
 	private JPasswordField passwordField;
 	private JLabel lblRegistroAcadmico;
@@ -65,14 +65,20 @@ public class loginUsuario {
 				try {
 					if(Pessoa.validaSenha(txtsdgadsfh.getText(), passwordField.getText())){
 						if(Pessoa.getPerfilUsuario(txtsdgadsfh.getText())==1){
+							// Professor autorizado
 							bemVindoProfessor.bemVindoProfessor();
-						}
-						if(Pessoa.getPerfilUsuario(txtsdgadsfh.getText())==2){
-							BemVindoAlunop.BemVindoAlunop();
-						}
-						if(Pessoa.getPerfilUsuario(txtsdgadsfh.getText())==3){
+						} else if(Pessoa.getPerfilUsuario(txtsdgadsfh.getText())==2){
+							// Aluno autorizado
+							if(aluno.validaUsuario(txtsdgadsfh.getText())){
+								BemVindoAlunop.BemVindoAlunop();
+							}else{
+								cadastroTurma.cadastroTurma();
+							}
+						} else if(Pessoa.getPerfilUsuario(txtsdgadsfh.getText())==3){
+							// Adminitrador Autorizado
 							cadastroUsuario.cadastraUsuario();
 						}
+						loginUsuario.frame.setVisible(false);
 					}
 				} catch (Exception e1) {
 					e1.printStackTrace();
