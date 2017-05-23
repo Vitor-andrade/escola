@@ -25,7 +25,7 @@ public class cadastroTurma {
 	/**
 	 * Launch the application.
 	 */
-	public static void cadastroTurma() {
+	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -79,13 +79,13 @@ public class cadastroTurma {
 		frame.getContentPane().add(lblOferecerCurso);
 		
 		textField_1 = new JTextField();
-		textField_1.setBounds(576, 380, 168, 39);
+		textField_1.setBounds(619, 380, 168, 39);
 		frame.getContentPane().add(textField_1);
 		textField_1.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("Oferecer Disciplina Nova");
 		lblNewLabel.setFont(new Font("Arial", Font.BOLD, 13));
-		lblNewLabel.setBounds(576, 355, 168, 14);
+		lblNewLabel.setBounds(619, 355, 168, 14);
 		frame.getContentPane().add(lblNewLabel);
 		
 		JButton btnCadastrar = new JButton("Cadastrar");
@@ -102,9 +102,9 @@ public class cadastroTurma {
 		tableCurso = new JTable();
 		tableCurso.setBounds(63, 138, 183, 192);
 		frame.getContentPane().add(tableCurso);
-		
+		//http://stackoverflow.com/questions/10620448/most-simple-code-to-populate-jtable-from-resultset
 		tableDisciplina = new JTable();
 		tableDisciplina.setBounds(576, 138, 183, 191);
 		frame.getContentPane().add(tableDisciplina);
-	}
+	} 
 }
