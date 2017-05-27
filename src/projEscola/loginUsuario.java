@@ -19,7 +19,7 @@ import com.jgoodies.forms.factories.DefaultComponentFactory;
 
 public class loginUsuario {
 
-	private static JFrame frame;
+	static JFrame frame;
 	private JTextField txtsdgadsfh;
 	private JPasswordField passwordField;
 	private JLabel lblRegistroAcadmico;

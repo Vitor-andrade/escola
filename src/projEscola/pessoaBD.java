@@ -35,6 +35,19 @@ public class pessoaBD {
 		
 	}
 	
+	static void setPessoa (String matricula , String senha, String nome, String pessoa) throws SQLException {
+
+		stmt = con.prepareStatement("select x.* from escola.pessoas x");
+		ResultSet result = stmt.executeQuery();
+		result.afterLast();
+		result.previous();
+		int x= result.getInt("id")+1;
+		
+		stmt = con.prepareStatement("INSERT INTO escola.pessoas (id, matricula, senha, nome , pessoa)"
+				  + " VALUES ("+x+", '"+matricula+"', '"+senha+"' , '"+nome+"', "+pessoa+")");
+		stmt.executeUpdate();
+	}
+	
 	public int getPerfilUsuario(String matricula) throws SQLException{
 		stmt = this.con.prepareStatement("select x.pessoa from escola.pessoas x where x.matricula ='"+matricula+"'" );
 		ResultSet result = stmt.executeQuery();

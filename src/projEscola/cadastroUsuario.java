@@ -22,6 +22,7 @@ public class cadastroUsuario {
 	private JPasswordField senha;
 	private JTextField nome;
 	private JTextField matricula;
+	private String x = "1";
 
 	/**
 	 * Launch the application.
@@ -86,7 +87,12 @@ public class cadastroUsuario {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					aluno.setAluno(matricula.getText(), senha.getText(), nome.getText());
+					if(matricula.getText().length()==8){
+						Pessoa.setPessoa(matricula.getText(), senha.getText(), nome.getText(), x);
+						Sucesso.Sucesso();
+					}else{
+						MenosDeOito.MenosDeOito();
+					}
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -108,21 +114,29 @@ public class cadastroUsuario {
 		frame.getContentPane().add(matricula);
 		matricula.setColumns(10);
 		
-		JRadioButton professor = new JRadioButton("Professor");
-		professor.setBounds(103, 223, 109, 23);
-		frame.getContentPane().add(professor);
-		
 		JRadioButton aluno = new JRadioButton("Aluno");
+		JRadioButton professor = new JRadioButton("Professor");
+		
+		professor.setBounds(103, 223, 109, 23);
+		professor.setSelected(true);
+		frame.getContentPane().add(professor);
+		professor.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				aluno.setSelected(false);
+				x="1";
+			}
+		});
+		
 		aluno.setBounds(214, 223, 109, 23);
 		frame.getContentPane().add(aluno);
-		
-		if (professor.isSelected()){
-			aluno.setEnabled(false);
-		}
-		
-		if (aluno.isSelected()){
-			professor.setEnabled(false);
-		}
+		aluno.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				professor.setSelected(false);
+				x="2";
+			}
+		});
 		
 		JLabel lblSelecioneSeuTipo = new JLabel("Selecione seu tipo de usu\u00E1rio");
 		lblSelecioneSeuTipo.setFont(new Font("Arial", Font.BOLD, 12));

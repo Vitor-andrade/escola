@@ -8,10 +8,6 @@ public class aluno extends Pessoa {
 		alunoBD.finalizaCadastro(matriculaP, matriculaA, curso, disciplina);
 	}
 	
-	static void setAluno (String matricula, String senha, String nome) throws SQLException {
-		new alunoBD().setAluno(matricula,senha,nome);
-	}
-	
 	static boolean validaUsuario (String matricula) throws SQLException {
 		return new alunoBD().validaUsuario(matricula);		
 	}

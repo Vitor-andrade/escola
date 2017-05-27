@@ -39,19 +39,6 @@ public class alunoBD {
 		}
 	}
 	
-	static void setAluno (String matricula , String senha, String nome) throws SQLException {
-
-		stmt = con.prepareStatement("select x.* from escola.pessoas x");
-		ResultSet result = stmt.executeQuery();
-		result.afterLast();
-		result.previous();
-		int x= result.getInt("id")+1;
-		
-		stmt = con.prepareStatement("INSERT INTO escola.pessoas (id, matricula, senha, nome , pessoa)"
-				  + " VALUES ("+x+", '"+matricula+"', '"+senha+"' , '"+nome+"', '2')");
-		stmt.executeUpdate();
-	}
-	
 	public boolean validaUsuario(String matricula) throws SQLException {
 
 		stmt = this.con.prepareStatement("select * from escola.materias x where x.matriculaA ='"+matricula+"'");
