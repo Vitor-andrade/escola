@@ -28,7 +28,7 @@ public class turmaBD {
 		this.con = conexao.getConexao();
 	}
 	
-	public Vector buscaTurmaCadastro() throws SQLException {
+	public Vector getTurmas() throws SQLException {
 		
 		stmt = this.con.prepareStatement("select x.turma from escola.materias x");
 		ResultSet result = stmt.executeQuery();
