@@ -66,9 +66,6 @@ public class cadastroDeMatricula {
 		scrollPane.setBounds(330, 145, 151, 233);
 		frame.getContentPane().add(scrollPane);
 		
-		JList disciplina = new JList();
-		scrollPane.setViewportView(disciplina);
-		
 		JScrollPane scrollPane_1 = new JScrollPane();
 		scrollPane_1.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPane_1.setBounds(588, 145, 151, 233);
@@ -80,9 +77,6 @@ public class cadastroDeMatricula {
 		scrollPane_2.setBounds(63, 145, 149, 231);
 		frame.getContentPane().add(scrollPane_2);
 		scrollPane_2.setToolTipText("oi\r\n");
-		
-		JList curso = new JList();
-		scrollPane_2.setViewportView(curso);
 		
 		JButton btnNewButton = new JButton("Cadastrar");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -108,12 +102,27 @@ public class cadastroDeMatricula {
 		frame.getContentPane().add(label);
 		label.setFont(new Font("Arial", Font.PLAIN, 13));
 		label.setLabelFor(scrollPane_1);
+		label.setVerticalAlignment(SwingConstants.BOTTOM);
 		
-		JList turmaa;
 		try {
-			turmaa = new JList(turma.buscaTurmaCadastro());
+			JList curso = new JList(Curso.getCursos());
+			scrollPane_2.setViewportView(curso);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		try {
+			JList disciplina = new JList(Disciplina.getDisciplinas());
+			scrollPane.setViewportView(disciplina);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		try {
+			JList turmaa = new JList(turma.getTurmas());
 			scrollPane_1.setViewportView(turmaa);
-			label.setVerticalAlignment(SwingConstants.BOTTOM);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

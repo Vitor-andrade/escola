@@ -3,13 +3,13 @@ package projEscola;
 import java.sql.SQLException;
 import java.util.Vector;
 
-public class turma {
+public class Curso {
 	
 	long matricula;
 
 	@SuppressWarnings("rawtypes")
-	static Vector getTurmas() throws SQLException{
-		return new turmaBD().getTurmas();
+	static Vector getCursos() throws SQLException{
+		return new cursoBD().getCursos();
 	}
 	
 }
