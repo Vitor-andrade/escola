@@ -9,22 +9,30 @@ import java.util.Vector;
 
 import com.mysql.jdbc.ResultSetMetaData;
 
+import servicos.ConexaoBanco;
+
 public class disciplinaBD {
 	
 	static String host = "127.0.0.1";
 	static int port = 3306;
 	static String dbName = "escola";
 	static String url = "jdbc:mysql://" + host + ":" + port + "/" + dbName;
-	
+	static ConexaoBanco conexao;
 	static Connection con = null;
 	static PreparedStatement stmt = null;
+	
+	public disciplinaBD(){
+		this.conexao = ConexaoBanco.getInstance();
+		this.con = conexao.getConexao();
+	}
 	
 	public Vector getDisciplinas() throws SQLException {
 		
 		stmt = this.con.prepareStatement("select x.disciplina from escola.materias x");
 		ResultSet result = stmt.executeQuery();
 	    ResultSetMetaData metaData = (ResultSetMetaData) result.getMetaData();
-	 // Cabeçário
+	    
+	    // Cabeçário
 	    Vector<String> columnNames = new Vector<String>();
 	    int columnCount = metaData.getColumnCount();
 	    for (int column = 1; column <= columnCount; column++) {

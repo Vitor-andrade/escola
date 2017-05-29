@@ -9,7 +9,12 @@ public class turma {
 
 	@SuppressWarnings("rawtypes")
 	static Vector getTurmas() throws SQLException{
-		return new turmaBD().getTurmas();
+		Vector turmas = new turmaBD().getTurmas();
+		Vector<String> arruma = new Vector<String>();
+		for(int i=0;i<turmas.size();i++){
+			arruma.insertElementAt(turmas.elementAt(i).toString().substring(1, turmas.elementAt(i).toString().length()-1), i);
+		}
+		return arruma;
 	}
 	
 }

@@ -9,7 +9,12 @@ public class Curso {
 
 	@SuppressWarnings("rawtypes")
 	static Vector getCursos() throws SQLException{
-		return new cursoBD().getCursos();
+		Vector cursos = new cursoBD().getCursos();
+		Vector<String> arruma = new Vector<String>();
+		for(int i=0;i<cursos.size();i++){
+			arruma.insertElementAt(cursos.elementAt(i).toString().substring(1, cursos.elementAt(i).toString().length()-1), i);
+		}
+		return arruma;
 	}
 	
 }
