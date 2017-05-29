@@ -7,8 +7,8 @@ public class Disciplina {
 	String disciplina;
 	
 	@SuppressWarnings("rawtypes")
-	static Vector getDisciplinas() throws SQLException{
-		Vector disciplinas = new disciplinaBD().getDisciplinas();
+	static Vector getDisciplinas(String selecionaCurso) throws SQLException{
+		Vector disciplinas = new disciplinaBD().getDisciplinas(selecionaCurso);
 		Vector<String> arruma = new Vector<String>();
 		for(int i=0;i<disciplinas.size();i++){
 			arruma.insertElementAt(disciplinas.elementAt(i).toString().substring(1, disciplinas.elementAt(i).toString().length()-1), i);

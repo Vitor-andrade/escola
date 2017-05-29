@@ -26,9 +26,9 @@ public class disciplinaBD {
 		this.con = conexao.getConexao();
 	}
 	
-	public Vector getDisciplinas() throws SQLException {
+	public Vector getDisciplinas(String selecionaCurso) throws SQLException {
 		
-		stmt = this.con.prepareStatement("select x.disciplina from escola.materias x");
+		stmt = this.con.prepareStatement("select x.disciplina from escola.materias x where x.curso="+selecionaCurso+"");
 		ResultSet result = stmt.executeQuery();
 	    ResultSetMetaData metaData = (ResultSetMetaData) result.getMetaData();
 	    
