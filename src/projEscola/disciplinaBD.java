@@ -19,12 +19,12 @@ public class disciplinaBD {
 	static Connection con = null;
 	static PreparedStatement stmt = null;
 	
-	public Vector getDisciplinas() throws SQLException {
+	public Vector getDisciplinas(String selecionaCurso) throws SQLException {
 		
-		stmt = this.con.prepareStatement("select x.disciplina from escola.materias x");
+		stmt = this.con.prepareStatement("select x.disciplina from escola.materias x where x.curso="+selecionaCurso+"");
 		ResultSet result = stmt.executeQuery();
 	    ResultSetMetaData metaData = (ResultSetMetaData) result.getMetaData();
-	 // Cabeçário
+	 // Cabeçalho
 	    Vector<String> columnNames = new Vector<String>();
 	    int columnCount = metaData.getColumnCount();
 	    for (int column = 1; column <= columnCount; column++) {

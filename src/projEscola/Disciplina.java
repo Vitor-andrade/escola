@@ -7,8 +7,8 @@ public class Disciplina {
 	String disciplina;
 	
 	@SuppressWarnings("rawtypes")
-	static Vector getDisciplinas() throws SQLException{
-		return new disciplinaBD().getDisciplinas();
+	static Vector getDisciplinas(String selecionaCurso) throws SQLException{
+		return new disciplinaBD().getDisciplinas(selecionaCurso);
 	}
 	
 	static void setDisciplina (String matricula, String curso, String disciplina) throws SQLException {

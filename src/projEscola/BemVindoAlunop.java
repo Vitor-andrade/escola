@@ -61,7 +61,7 @@ public class BemVindoAlunop {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnNewButton.setBackground(Color.BLUE);
+		btnNewButton.setBackground(Color.LIGHT_GRAY);
 		btnNewButton.setForeground(Color.BLACK);
 		btnNewButton.setBounds(664, 383, 89, 23);
 		frame.getContentPane().add(btnNewButton);

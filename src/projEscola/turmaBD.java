@@ -28,9 +28,9 @@ public class turmaBD {
 		this.con = conexao.getConexao();
 	}
 	
-	public Vector getTurmas() throws SQLException {
+	public Vector getTurmas(String selecionaDisciplina) throws SQLException {
 		
-		stmt = this.con.prepareStatement("select x.turma from escola.materias x");
+		stmt = this.con.prepareStatement("select x.turma from escola.materias x where x.disciplina="+selecionaDisciplina+"");
 		ResultSet result = stmt.executeQuery();
 	    ResultSetMetaData metaData = (ResultSetMetaData) result.getMetaData();
 	 // Cabeçário

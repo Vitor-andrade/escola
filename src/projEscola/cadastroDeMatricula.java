@@ -83,7 +83,7 @@ public class cadastroDeMatricula {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnNewButton.setBackground(Color.BLUE);
+		btnNewButton.setBackground(Color.LIGHT_GRAY);
 		btnNewButton.setBounds(692, 421, 106, 30);
 		frame.getContentPane().add(btnNewButton);
 		
@@ -107,27 +107,17 @@ public class cadastroDeMatricula {
 		try {
 			JList curso = new JList(Curso.getCursos());
 			scrollPane_2.setViewportView(curso);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		try {
-			JList disciplina = new JList(Disciplina.getDisciplinas());
+			String selecionaCurso = curso.getSelectedValue().toString();
+			JList disciplina = new JList(Disciplina.getDisciplinas(selecionaCurso));
 			scrollPane.setViewportView(disciplina);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		try {
-			JList turmaa = new JList(turma.getTurmas());
+			String selecionaDisciplina = disciplina.getSelectedValue().toString();
+			JList turmaa = new JList(turma.getTurmas(selecionaDisciplina));
 			scrollPane_1.setViewportView(turmaa);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		JLabel lblCadastro = new JLabel("Cadastro");
 		lblCadastro.setFont(new Font("Arial", Font.BOLD, 20));
 		lblCadastro.setBounds(332, 11, 216, 53);
