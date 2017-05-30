@@ -2,7 +2,7 @@ package projEscola;
 
 import java.sql.SQLException;
 
-public class professor extends Pessoa {
+public class Professor extends Pessoa {
 	
 
 }

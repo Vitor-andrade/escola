@@ -16,7 +16,7 @@ import javax.swing.JTable;
 import javax.swing.JList;
 import javax.swing.ScrollPaneConstants;
 
-public class cadastroTurma {
+public class CadastroTurma {
 
 	private JFrame frame;
 	private JTextField textField;
@@ -29,7 +29,7 @@ public class cadastroTurma {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					cadastroTurma window = new cadastroTurma();
+					CadastroTurma window = new CadastroTurma();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -41,7 +41,7 @@ public class cadastroTurma {
 	/**
 	 * Create the application.
 	 */
-	public cadastroTurma() {
+	public CadastroTurma() {
 		initialize();
 	}
 

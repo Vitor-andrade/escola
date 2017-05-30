@@ -1,20 +1,16 @@
 package projEscola;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Vector;
 
-import javax.swing.table.DefaultTableModel;
-
 import com.mysql.jdbc.ResultSetMetaData;
 
 import servicos.ConexaoBanco;
 
-public class turmaBD {
-	
+public class CursoBD {
 	static String host = "127.0.0.1";
 	static int port = 3306;
 	static String dbName = "escola";
@@ -23,17 +19,18 @@ public class turmaBD {
 	static Connection con = null;
 	static PreparedStatement stmt = null;
 	
-	public turmaBD(){
+	public CursoBD(){
 		this.conexao = ConexaoBanco.getInstance();
 		this.con = conexao.getConexao();
 	}
 	
-	public Vector getTurmas(String selecionaDisciplina) throws SQLException {
+	public Vector getCursos() throws SQLException {
 		
-		stmt = this.con.prepareStatement("select x.turma from escola.materias x where x.disciplina="+selecionaDisciplina+"");
+		stmt = this.con.prepareStatement("select x.curso from escola.materias x");
 		ResultSet result = stmt.executeQuery();
 	    ResultSetMetaData metaData = (ResultSetMetaData) result.getMetaData();
-	 // Cabeçário
+	    
+	    // Cabeçário
 	    Vector<String> columnNames = new Vector<String>();
 	    int columnCount = metaData.getColumnCount();
 	    for (int column = 1; column <= columnCount; column++) {
@@ -53,4 +50,5 @@ public class turmaBD {
 	    return data;
 
 	}
+
 }

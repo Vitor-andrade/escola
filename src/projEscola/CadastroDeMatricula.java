@@ -26,19 +26,18 @@ import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import javax.swing.JTable;
 
-public class cadastroDeMatricula {
+public class CadastroDeMatricula {
 
 	private JFrame frame;
-	private JTable Turma;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void cadastroDeMatricula() {
+	public static void CadastroDeMatricula() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					cadastroDeMatricula window = new cadastroDeMatricula();
+					CadastroDeMatricula window = new CadastroDeMatricula();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -50,7 +49,7 @@ public class cadastroDeMatricula {
 	/**
 	 * Create the application.
 	 */
-	public cadastroDeMatricula() {
+	public CadastroDeMatricula() {
 		initialize();
 	}
 
@@ -117,6 +116,7 @@ public class cadastroDeMatricula {
 		        	String selecionaCurso = curso.getSelectedValue().toString();
 		        	try {
 						disciplina.setListData(Disciplina.getDisciplinas(selecionaCurso));
+						turmaa.setEnabled(false);
 					} catch (SQLException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
@@ -128,7 +128,8 @@ public class cadastroDeMatricula {
 		        public void mouseClicked(MouseEvent e) {
 		        	String selecionaDisciplina = disciplina.getSelectedValue().toString();
 		        	try {
-		        		turmaa.setListData(turma.getTurmas(selecionaDisciplina));
+		        		turmaa.setListData(Turma.getTurmas(selecionaDisciplina));
+		        		turmaa.setEnabled(true);
 					} catch (SQLException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
@@ -146,5 +147,13 @@ public class cadastroDeMatricula {
 		lblCadastro.setFont(new Font("Arial", Font.BOLD, 20));
 		lblCadastro.setBounds(332, 11, 216, 53);
 		frame.getContentPane().add(lblCadastro);
+		
+		JButton btnNewButton_1 = new JButton("Adicionar Disciplina");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		btnNewButton_1.setBounds(330, 421, 132, 30);
+		frame.getContentPane().add(btnNewButton_1);
 	}
 }

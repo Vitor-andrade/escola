@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class professorBD {
+public class ProfessorBD {
 	
 	static String host = "127.0.0.1";
 	static int port = 3306;

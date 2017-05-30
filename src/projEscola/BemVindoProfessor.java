@@ -11,18 +11,18 @@ import javax.swing.JScrollPane;
 import javax.swing.JScrollBar;
 import java.awt.Button;
 
-public class bemVindoProfessor {
+public class BemVindoProfessor {
 
 	private JFrame frame;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void bemVindoProfessor() {
+	public static void BemVindoProfessor() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					bemVindoProfessor window = new bemVindoProfessor();
+					BemVindoProfessor window = new BemVindoProfessor();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -34,7 +34,7 @@ public class bemVindoProfessor {
 	/**
 	 * Create the application.
 	 */
-	public bemVindoProfessor() {
+	public BemVindoProfessor() {
 		initialize();
 	}
 

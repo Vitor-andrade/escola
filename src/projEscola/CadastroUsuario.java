@@ -16,7 +16,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
 
-public class cadastroUsuario {
+public class CadastroUsuario {
 
 	private JFrame frame;
 	private JPasswordField senha;
@@ -31,7 +31,7 @@ public class cadastroUsuario {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					cadastroUsuario window = new cadastroUsuario();
+					CadastroUsuario window = new CadastroUsuario();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -43,7 +43,7 @@ public class cadastroUsuario {
 	/**
 	 * Create the application.
 	 */
-	public cadastroUsuario() {
+	public CadastroUsuario() {
 		initialize();
 	}
 

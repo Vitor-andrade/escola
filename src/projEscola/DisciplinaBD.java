@@ -11,7 +11,7 @@ import com.mysql.jdbc.ResultSetMetaData;
 
 import servicos.ConexaoBanco;
 
-public class disciplinaBD {
+public class DisciplinaBD {
 	
 	static String host = "127.0.0.1";
 	static int port = 3306;
@@ -21,14 +21,14 @@ public class disciplinaBD {
 	static Connection con = null;
 	static PreparedStatement stmt = null;
 	
-	public disciplinaBD(){
+	public DisciplinaBD(){
 		this.conexao = ConexaoBanco.getInstance();
 		this.con = conexao.getConexao();
 	}
 	
 	public Vector getDisciplinas(String selecionaCurso) throws SQLException {
 		
-		stmt = this.con.prepareStatement("select x.disciplina from escola.materias x where x.curso="+selecionaCurso+"");
+		stmt = this.con.prepareStatement("select x.disciplina from escola.materias x where x.curso='"+selecionaCurso+"'");
 		ResultSet result = stmt.executeQuery();
 	    ResultSetMetaData metaData = (ResultSetMetaData) result.getMetaData();
 	    

@@ -17,7 +17,7 @@ import java.awt.Color;
 import java.awt.Font;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 
-public class loginUsuario {
+public class LoginUsuario {
 
 	static JFrame frame;
 	private JTextField txtsdgadsfh;
@@ -33,7 +33,7 @@ public class loginUsuario {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					loginUsuario window = new loginUsuario();
+					LoginUsuario window = new LoginUsuario();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -45,7 +45,7 @@ public class loginUsuario {
 	/**
 	 * Create the application.
 	 */
-	public loginUsuario() {
+	public LoginUsuario() {
 		initialize();
 	}
 
@@ -66,19 +66,19 @@ public class loginUsuario {
 					if(Pessoa.validaSenha(txtsdgadsfh.getText(), passwordField.getText())){
 						if(Pessoa.getPerfilUsuario(txtsdgadsfh.getText())==1){
 							// Professor autorizado
-							bemVindoProfessor.bemVindoProfessor();
+							BemVindoProfessor.BemVindoProfessor();
 						} else if(Pessoa.getPerfilUsuario(txtsdgadsfh.getText())==2){
 							// Aluno autorizado
-							if(aluno.validaUsuario(txtsdgadsfh.getText())){
+							if(Aluno.validaUsuario(txtsdgadsfh.getText())){
 								BemVindoAlunop.BemVindoAlunop();
 							}else{
-								cadastroDeMatricula.cadastroDeMatricula();
+								CadastroDeMatricula.CadastroDeMatricula();
 							}
 						} else if(Pessoa.getPerfilUsuario(txtsdgadsfh.getText())==3){
 							// Adminitrador Autorizado
-							cadastroUsuario.cadastraUsuario();
+							CadastroUsuario.cadastraUsuario();
 						}
-						loginUsuario.frame.setVisible(false);
+						LoginUsuario.frame.setVisible(false);
 					}
 				} catch (Exception e1) {
 					e1.printStackTrace();

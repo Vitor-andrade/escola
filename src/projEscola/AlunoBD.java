@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 import servicos.ConexaoBanco;
 
-public class alunoBD {
+public class AlunoBD {
 	
 	static String host = "127.0.0.1";
 	static int port = 3306;
@@ -18,7 +18,7 @@ public class alunoBD {
 	static Connection con = null;
 	static PreparedStatement stmt = null;
 	
-	public alunoBD(){
+	public AlunoBD(){
 		this.conexao = ConexaoBanco.getInstance();
 		this.con = conexao.getConexao();
 	}
