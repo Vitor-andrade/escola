@@ -30,10 +30,10 @@ public class TurmaBD {
 	
 	public Vector getTurmas(String selecionaDisciplina) throws SQLException {
 		
-		stmt = this.con.prepareStatement("select x.turma from escola.materias x where x.disciplina='"+selecionaDisciplina+"'");
+		stmt = this.con.prepareStatement("select x.turma from escola.materias x where x.disciplina like '"+selecionaDisciplina+"'");
 		ResultSet result = stmt.executeQuery();
 	    ResultSetMetaData metaData = (ResultSetMetaData) result.getMetaData();
-	 // Cabeçário
+	    // Cabeçário
 	    Vector<String> columnNames = new Vector<String>();
 	    int columnCount = metaData.getColumnCount();
 	    for (int column = 1; column <= columnCount; column++) {

@@ -28,7 +28,7 @@ public class DisciplinaBD {
 	
 	public Vector getDisciplinas(String selecionaCurso) throws SQLException {
 		
-		stmt = this.con.prepareStatement("select x.disciplina from escola.materias x where x.curso='"+selecionaCurso+"'");
+		stmt = this.con.prepareStatement("select x.disciplina from escola.materias x where x.curso like '"+selecionaCurso+"'");
 		ResultSet result = stmt.executeQuery();
 	    ResultSetMetaData metaData = (ResultSetMetaData) result.getMetaData();
 	    
