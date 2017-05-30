@@ -5,6 +5,10 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.sql.SQLException;
+
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JScrollBar;
@@ -104,15 +108,20 @@ public class CadastroTurma {
 		scrollPane.setBounds(68, 141, 168, 203);
 		frame.getContentPane().add(scrollPane);
 		
-		JList curso = new JList();
-		scrollPane.setViewportView(curso);
-		
 		JScrollPane scrollPane_1 = new JScrollPane();
 		scrollPane_1.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPane_1.setBounds(576, 138, 168, 203);
 		frame.getContentPane().add(scrollPane_1);
 		
-		JList disciplina = new JList();
-		scrollPane_1.setViewportView(disciplina);
+		try {
+			JList curso = new JList(Curso.getCursos());
+			scrollPane.setViewportView(curso);
+        	JList disciplina = new JList(Disciplina.getDisciplinas("%%"));
+			scrollPane_1.setViewportView(disciplina);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	} 
 }
