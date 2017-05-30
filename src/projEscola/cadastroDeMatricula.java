@@ -20,6 +20,8 @@ import javax.swing.JList;
 import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import javax.swing.JTable;
@@ -105,13 +107,35 @@ public class cadastroDeMatricula {
 		label.setVerticalAlignment(SwingConstants.BOTTOM);
 		
 		try {
-			JList curso = new JList(Curso.getCursos());
+			JList<?> curso = new JList<Object>(Curso.getCursos());
+        	JList<?> disciplina = new JList<Object>();
+        	JList<?> turmaa = new JList<Object>();
 			scrollPane_2.setViewportView(curso);
-			String selecionaCurso = curso.getSelectedValue().toString();
-			JList disciplina = new JList(Disciplina.getDisciplinas(selecionaCurso));
 			scrollPane.setViewportView(disciplina);
-			String selecionaDisciplina = disciplina.getSelectedValue().toString();
-			JList turmaa = new JList(turma.getTurmas(selecionaDisciplina));
+			curso.addMouseListener(new MouseAdapter() {
+		        public void mouseClicked(MouseEvent e) {
+		        	String selecionaCurso = curso.getSelectedValue().toString();
+		        	try {
+						disciplina.setListData(Disciplina.getDisciplinas(selecionaCurso));
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+		            
+		        }
+		    });
+			disciplina.addMouseListener(new MouseAdapter() {
+		        public void mouseClicked(MouseEvent e) {
+		        	String selecionaDisciplina = disciplina.getSelectedValue().toString();
+		        	try {
+		        		turmaa.setListData(turma.getTurmas(selecionaDisciplina));
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+		            
+		        }
+		    });
 			scrollPane_1.setViewportView(turmaa);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
