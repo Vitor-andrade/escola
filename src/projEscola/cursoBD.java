@@ -29,7 +29,8 @@ public class cursoBD {
 		stmt = this.con.prepareStatement("select x.curso from escola.materias x");
 		ResultSet result = stmt.executeQuery();
 	    ResultSetMetaData metaData = (ResultSetMetaData) result.getMetaData();
-	 // Cabeçário
+	    
+	    // Cabeçário
 	    Vector<String> columnNames = new Vector<String>();
 	    int columnCount = metaData.getColumnCount();
 	    for (int column = 1; column <= columnCount; column++) {

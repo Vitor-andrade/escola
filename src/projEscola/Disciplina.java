@@ -8,7 +8,12 @@ public class Disciplina {
 	
 	@SuppressWarnings("rawtypes")
 	static Vector getDisciplinas(String selecionaCurso) throws SQLException{
-		return new disciplinaBD().getDisciplinas(selecionaCurso);
+		Vector disciplinas = new disciplinaBD().getDisciplinas(selecionaCurso);
+		Vector<String> arruma = new Vector<String>();
+		for(int i=0;i<disciplinas.size();i++){
+			arruma.insertElementAt(disciplinas.elementAt(i).toString().substring(1, disciplinas.elementAt(i).toString().length()-1), i);
+		}
+		return arruma;
 	}
 	
 	static void setDisciplina (String matricula, String curso, String disciplina) throws SQLException {
