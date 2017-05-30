@@ -29,6 +29,8 @@ import javax.swing.JTable;
 public class CadastroDeMatricula {
 
 	private JFrame frame;
+	private String[] escolhidos;
+	private int ajudante;
 
 	/**
 	 * Launch the application.
@@ -85,7 +87,7 @@ public class CadastroDeMatricula {
 			}
 		});
 		btnNewButton.setBackground(Color.LIGHT_GRAY);
-		btnNewButton.setBounds(692, 421, 106, 30);
+		btnNewButton.setBounds(486, 421, 106, 30);
 		frame.getContentPane().add(btnNewButton);
 		
 		JLabel lblCurso = new JLabel("Curso");
@@ -111,6 +113,7 @@ public class CadastroDeMatricula {
         	JList<?> turmaa = new JList<Object>();
 			scrollPane_2.setViewportView(curso);
 			scrollPane.setViewportView(disciplina);
+			scrollPane_1.setViewportView(turmaa);
 			curso.addMouseListener(new MouseAdapter() {
 		        public void mouseClicked(MouseEvent e) {
 		        	String selecionaCurso = curso.getSelectedValue().toString();
@@ -137,7 +140,12 @@ public class CadastroDeMatricula {
 		            
 		        }
 		    });
-			scrollPane_1.setViewportView(turmaa);
+			turmaa.addMouseListener(new MouseAdapter() {
+		        public void mouseClicked(MouseEvent e) {
+		        	String selecionaTurma = turmaa.getSelectedValue().toString();
+		        	escolhidos[escolhidos.length] = selecionaTurma;
+		        }
+		    });
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -151,9 +159,10 @@ public class CadastroDeMatricula {
 		JButton btnNewButton_1 = new JButton("Adicionar Disciplina");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				ConfirmaTurmas.ConfirmaTurmas(escolhidos);
 			}
 		});
-		btnNewButton_1.setBounds(330, 421, 132, 30);
+		btnNewButton_1.setBounds(200, 421, 151, 30);
 		frame.getContentPane().add(btnNewButton_1);
 	}
 }
