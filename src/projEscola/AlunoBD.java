@@ -1,7 +1,6 @@
 package projEscola;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,6 +17,7 @@ public class AlunoBD {
 	static Connection con = null;
 	static PreparedStatement stmt = null;
 	
+	@SuppressWarnings("static-access")
 	public AlunoBD(){
 		this.conexao = ConexaoBanco.getInstance();
 		this.con = conexao.getConexao();
@@ -39,6 +39,7 @@ public class AlunoBD {
 		}
 	}
 	
+	@SuppressWarnings("static-access")
 	public boolean validaUsuario(String matricula) throws SQLException {
 
 		stmt = this.con.prepareStatement("select * from escola.materias x where x.matriculaA ='"+matricula+"'");

@@ -42,7 +42,10 @@ public class CursoBD {
 	    while (result.next()) {
 	        Vector<Object> vector = new Vector<Object>();
 	        for (int columnIndex = 1; columnIndex <= columnCount; columnIndex++) {
-	            vector.add(result.getObject(columnIndex));
+	        	vector.add(result.getObject(columnIndex));
+	        }
+	        if(data.contains(vector)){
+	        	continue;
 	        }
 	        data.add(vector);
 	    }

@@ -1,4 +1,4 @@
-package projEscola;
+package mensagens;
 
 import java.awt.EventQueue;
 

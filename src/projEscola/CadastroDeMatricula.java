@@ -1,36 +1,33 @@
 package projEscola;
 
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.BoxLayout;
-import java.awt.FlowLayout;
-import java.awt.CardLayout;
-import javax.swing.SpringLayout;
-import javax.swing.JScrollPane;
-import javax.swing.JPanel;
-import javax.swing.ScrollPaneConstants;
-import javax.swing.JTextField;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
-import javax.swing.JTextPane;
-import java.awt.Font;
-import javax.swing.JScrollBar;
-import javax.swing.JList;
-import javax.swing.JButton;
 import java.awt.Color;
+import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.SQLException;
-import java.awt.event.ActionEvent;
-import javax.swing.JTable;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
+import javax.swing.SwingConstants;
+
+import mensagens.ConfirmaTurmas;
+import mensagens.JaFoiSelecionado;
+import mensagens.MaximoTurmas;
 
 public class CadastroDeMatricula {
 
 	private JFrame frame;
-	private String[] escolhidos;
-	private int ajudante;
+	private String selecionaDisciplina = null;
+	private List<String> escolhidos = new ArrayList<>();
 
 	/**
 	 * Launch the application.
@@ -84,6 +81,8 @@ public class CadastroDeMatricula {
 		JButton btnNewButton = new JButton("Cadastrar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				ConfirmaTurmas.ConfirmaTurmas(escolhidos);
+				escolhidos=null;
 			}
 		});
 		btnNewButton.setBackground(Color.LIGHT_GRAY);
@@ -108,6 +107,7 @@ public class CadastroDeMatricula {
 		label.setVerticalAlignment(SwingConstants.BOTTOM);
 		
 		try {
+			@SuppressWarnings("unchecked")
 			JList<?> curso = new JList<Object>(Curso.getCursos());
         	JList<?> disciplina = new JList<Object>();
         	JList<?> turmaa = new JList<Object>();
@@ -115,7 +115,8 @@ public class CadastroDeMatricula {
 			scrollPane.setViewportView(disciplina);
 			scrollPane_1.setViewportView(turmaa);
 			curso.addMouseListener(new MouseAdapter() {
-		        public void mouseClicked(MouseEvent e) {
+		        @SuppressWarnings("unchecked")
+				public void mouseClicked(MouseEvent e) {
 		        	String selecionaCurso = curso.getSelectedValue().toString();
 		        	try {
 						disciplina.setListData(Disciplina.getDisciplinas(selecionaCurso));
@@ -128,8 +129,9 @@ public class CadastroDeMatricula {
 		        }
 		    });
 			disciplina.addMouseListener(new MouseAdapter() {
-		        public void mouseClicked(MouseEvent e) {
-		        	String selecionaDisciplina = disciplina.getSelectedValue().toString();
+		        @SuppressWarnings("unchecked")
+				public void mouseClicked(MouseEvent e) {
+		        	selecionaDisciplina = disciplina.getSelectedValue().toString();
 		        	try {
 		        		turmaa.setListData(Turma.getTurmas(selecionaDisciplina));
 		        		turmaa.setEnabled(true);
@@ -138,12 +140,6 @@ public class CadastroDeMatricula {
 						e1.printStackTrace();
 					}
 		            
-		        }
-		    });
-			turmaa.addMouseListener(new MouseAdapter() {
-		        public void mouseClicked(MouseEvent e) {
-		        	String selecionaTurma = turmaa.getSelectedValue().toString();
-		        	escolhidos[escolhidos.length] = selecionaTurma;
 		        }
 		    });
 		} catch (SQLException e) {
@@ -159,7 +155,13 @@ public class CadastroDeMatricula {
 		JButton btnNewButton_1 = new JButton("Adicionar Disciplina");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				ConfirmaTurmas.ConfirmaTurmas(escolhidos);
+				if(escolhidos.contains(selecionaDisciplina)){
+					JaFoiSelecionado.JaFoiSelecionado();
+				}else if(escolhidos.size()==5){
+					MaximoTurmas.MaximoTurmas();
+				}else{
+					escolhidos.add(selecionaDisciplina);
+				}
 			}
 		});
 		btnNewButton_1.setBounds(200, 421, 151, 30);
