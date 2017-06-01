@@ -20,8 +20,9 @@ public class BemVindoProfessor {
 
 	/**
 	 * Launch the application.
+	 * @param teacher 
 	 */
-	public static void BemVindoProfessor() {
+	public static void BemVindoProfessor(Professor teacher) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {

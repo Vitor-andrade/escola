@@ -28,9 +28,8 @@ public class TurmaBD {
 		this.con = conexao.getConexao();
 	}
 	
-	public Vector getTurmas(String selecionaDisciplina) throws SQLException {
-		
-		stmt = this.con.prepareStatement("select x.turma from escola.materias x where x.disciplina like '"+selecionaDisciplina+"'");
+	public Vector getTurmas(String disciplina) throws SQLException {
+		stmt = this.con.prepareStatement("select x.turma from escola.materias x where x.disciplina like '"+disciplina+"'");
 		ResultSet result = stmt.executeQuery();
 	    ResultSetMetaData metaData = (ResultSetMetaData) result.getMetaData();
 	    // Cabeçário
@@ -51,6 +50,19 @@ public class TurmaBD {
 	    }
 
 	    return data;
-
+	}
+	
+	public int getId(String disciplina) throws SQLException {
+		stmt = this.con.prepareStatement("select x.id from escola.materias x where x.disciplina like '"+disciplina+"'");
+		ResultSet result = stmt.executeQuery();
+		result.next();
+		return result.getInt("id");
+	}
+	
+	public String getProfessor(String id) throws SQLException {
+		stmt = this.con.prepareStatement("select x.matriculaP from escola.materias x where x.id="+id+"");
+		ResultSet result = stmt.executeQuery();
+		result.next();
+		return result.getString("matriculaP");
 	}
 }

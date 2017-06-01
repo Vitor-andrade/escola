@@ -4,7 +4,7 @@ import java.sql.SQLException;
 
 public class Pessoa {
 
-	long matricula;
+	private String matricula;
 	String senha;
 	String nome;
 	boolean admin;
@@ -20,5 +20,17 @@ public class Pessoa {
 	
 	static int getPerfilUsuario(String matricula) throws SQLException{
 		return new PessoaBD().getPerfilUsuario(matricula);
+	}
+	
+	static String getNomeUsuario(String matricula) throws SQLException{
+		return new PessoaBD().getNomeUsuario(matricula);
+	}
+
+	public String getMatricula() {
+		return matricula;
+	}
+
+	public void setMatricula(String matricula) {
+		this.matricula = matricula;
 	}
 }

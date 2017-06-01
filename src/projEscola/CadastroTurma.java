@@ -116,7 +116,7 @@ public class CadastroTurma {
 		try {
 			JList curso = new JList(Curso.getCursos());
 			scrollPane.setViewportView(curso);
-        	JList disciplina = new JList(Disciplina.getDisciplinas("%%"));
+        	JList disciplina = new JList(Disciplina.getDisciplinas("%%", 0));
 			scrollPane_1.setViewportView(disciplina);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

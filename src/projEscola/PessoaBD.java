@@ -55,4 +55,11 @@ public class PessoaBD {
 		return result.getInt("pessoa");
 	}
 
+	public String getNomeUsuario(String matricula) throws SQLException {
+		stmt = this.con.prepareStatement("select x.nome from escola.pessoas x where x.matricula ='"+matricula+"'" );
+		ResultSet result = stmt.executeQuery();
+		result.next();
+		return result.getString("nome");
+	}
+
 }

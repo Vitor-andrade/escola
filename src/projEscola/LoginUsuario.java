@@ -66,13 +66,21 @@ public class LoginUsuario {
 					if(Pessoa.validaSenha(txtsdgadsfh.getText(), passwordField.getText())){
 						if(Pessoa.getPerfilUsuario(txtsdgadsfh.getText())==1){
 							// Professor autorizado
-							BemVindoProfessor.BemVindoProfessor();
+							Professor teacher = new Professor();
+							teacher.setMatricula(txtsdgadsfh.getText());
+							teacher.nome = Pessoa.getNomeUsuario(teacher.getMatricula());
+							
+							BemVindoProfessor.BemVindoProfessor(teacher);
 						} else if(Pessoa.getPerfilUsuario(txtsdgadsfh.getText())==2){
 							// Aluno autorizado
+							Aluno estudante = new Aluno();
+							estudante.setMatricula(txtsdgadsfh.getText());
+							estudante.nome = Pessoa.getNomeUsuario(estudante.getMatricula());
+							
 							if(Aluno.validaUsuario(txtsdgadsfh.getText())){
-								BemVindoAlunop.BemVindoAlunop();
+								BemVindoAlunop.BemVindoAlunop(estudante);
 							}else{
-								CadastroDeMatricula.CadastroDeMatricula();
+								CadastroDeMatricula.CadastroDeMatricula(estudante);
 							}
 						} else if(Pessoa.getPerfilUsuario(txtsdgadsfh.getText())==3){
 							// Adminitrador Autorizado

@@ -5,6 +5,8 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.util.Vector;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -12,19 +14,23 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
+import javax.swing.JList;
+import javax.swing.ScrollPaneConstants;
 
 public class BemVindoAlunop {
 
 	private JFrame frame;
+	private Aluno estudante;
 
 	/**
 	 * Launch the application.
+	 * @param estudante 
 	 */
-	public static void BemVindoAlunop() {
+	public static void BemVindoAlunop(Aluno estudante1) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					BemVindoAlunop window = new BemVindoAlunop();
+					BemVindoAlunop window = new BemVindoAlunop(estudante1);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -36,7 +42,8 @@ public class BemVindoAlunop {
 	/**
 	 * Create the application.
 	 */
-	public BemVindoAlunop() {
+	public BemVindoAlunop(Aluno estudante1) {
+		estudante = estudante1;
 		initialize();
 	}
 
@@ -69,18 +76,32 @@ public class BemVindoAlunop {
 		frame.getContentPane().add(lblNewLabel);
 		
 		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPane.setBounds(50, 125, 195, 207);
 		frame.getContentPane().add(scrollPane);
 		
-		JPanel panel = new JPanel();
-		scrollPane.setViewportView(panel);
+		Vector<String> info = new Vector<String>();
+		info.addElement("Nome do Aluno:");
+		info.addElement(estudante.nome);
+		info.addElement(" ");
+		info.addElement("Matrícula:");
+		info.addElement(estudante.getMatricula());
+		JList<?> dados = new JList<Object>(info);
+		scrollPane.setViewportView(dados);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPane_1.setBounds(556, 125, 171, 207);
 		frame.getContentPane().add(scrollPane_1);
 		
-		JScrollBar scrollBar = new JScrollBar();
-		scrollPane_1.setRowHeaderView(scrollBar);
+		JList<?> turmas;
+		try {
+			turmas = new JList<Object>(Disciplina.getDisciplinas(estudante.getMatricula(), 1));
+			scrollPane_1.setViewportView(turmas);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		JLabel lblBemVindoAluno = new JLabel("Bem Vindo, Aluno!");
 		lblBemVindoAluno.setFont(new Font("Arial", Font.BOLD, 20));

@@ -10,25 +10,32 @@ import javax.swing.JButton;
 import javax.swing.SwingConstants;
 
 import projEscola.Aluno;
+import projEscola.BemVindoAlunop;
 import projEscola.CadastroDeMatricula;
+import projEscola.Turma;
 
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 
 public class ConfirmaTurmas {
 
 	private static JFrame frame;
 	private static List<String> escolhidos = new ArrayList<>();
+	private Aluno estudante;
+	private String selecionaCurso;
 
 	/**
 	 * Launch the application.
 	 * @param escolhidos2 
+	 * @param estudante1 
+	 * @param selecionaCurso1 
 	 */
-	public static void ConfirmaTurmas(List<String> escolhidos2) {
+	public static void ConfirmaTurmas(List<String> escolhidos2, Aluno estudante1, String selecionaCurso1) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ConfirmaTurmas window = new ConfirmaTurmas(escolhidos2);
+					ConfirmaTurmas window = new ConfirmaTurmas(escolhidos2, estudante1, selecionaCurso1);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -40,8 +47,10 @@ public class ConfirmaTurmas {
 	/**
 	 * Create the application.
 	 */
-	public ConfirmaTurmas(List<String> escolhidos2) {
+	public ConfirmaTurmas(List<String> escolhidos2, Aluno estudante1, String selecionaCurso1) {
 		escolhidos = escolhidos2;
+		estudante = estudante1;
+		selecionaCurso = selecionaCurso1;
 		initialize();
 	}
 
@@ -82,8 +91,18 @@ public class ConfirmaTurmas {
 		JButton btnNewButton = new JButton("Confirmar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//projEscola.Aluno.finalizaCadastro(matriculaP, matriculaA, curso, disciplina);
+				for(int i=0;i<escolhidos.size();i++){
+					try {
+						projEscola.Aluno.finalizaCadastro(Turma.getProfessor(escolhidos.get(i).substring(escolhidos.get(i).length()-1, escolhidos.get(i).length())), estudante.getMatricula(), selecionaCurso, escolhidos.get(i).substring(0, escolhidos.get(i).length()-1));
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}
+				CadastroDeMatricula.frame.setVisible(false);
 				ConfirmaTurmas.frame.setVisible(false);
+				BemVindoAlunop.BemVindoAlunop(estudante);
+				Sucesso.Sucesso();
 			}
 		});
 		btnNewButton.setBounds(82, 197, 97, 30);
@@ -100,29 +119,29 @@ public class ConfirmaTurmas {
 		
 		switch (escolhidos.size()){
 		case 1:
-			um.setText(escolhidos.get(0));
+			um.setText(escolhidos.get(0).substring(0, escolhidos.get(0).length()-1));
 			break;
 		case 2:
-			um.setText(escolhidos.get(0));
-			dois.setText(escolhidos.get(1));
+			um.setText(escolhidos.get(0).substring(0, escolhidos.get(0).length()-1));
+			dois.setText(escolhidos.get(1).substring(0, escolhidos.get(1).length()-1));
 			break;
 		case 3:
-			um.setText(escolhidos.get(0));
-			dois.setText(escolhidos.get(1));
-			tres.setText(escolhidos.get(2));
+			um.setText(escolhidos.get(0).substring(0, escolhidos.get(0).length()-1));
+			dois.setText(escolhidos.get(1).substring(0, escolhidos.get(1).length()-1));
+			tres.setText(escolhidos.get(2).substring(0, escolhidos.get(2).length()-1));
 			break;
 		case 4:
-			um.setText(escolhidos.get(0));
-			dois.setText(escolhidos.get(1));
-			tres.setText(escolhidos.get(2));
-			quatro.setText(escolhidos.get(3));
+			um.setText(escolhidos.get(0).substring(0, escolhidos.get(0).length()-1));
+			dois.setText(escolhidos.get(1).substring(0, escolhidos.get(1).length()-1));
+			tres.setText(escolhidos.get(2).substring(0, escolhidos.get(2).length()-1));
+			quatro.setText(escolhidos.get(3).substring(0, escolhidos.get(3).length()-1));
 			break;
 		case 5:
-			um.setText(escolhidos.get(0));
-			dois.setText(escolhidos.get(1));
-			tres.setText(escolhidos.get(2));
-			quatro.setText(escolhidos.get(3));
-			cinco.setText(escolhidos.get(4));
+			um.setText(escolhidos.get(0).substring(0, escolhidos.get(0).length()-1));
+			dois.setText(escolhidos.get(1).substring(0, escolhidos.get(1).length()-1));
+			tres.setText(escolhidos.get(2).substring(0, escolhidos.get(2).length()-1));
+			quatro.setText(escolhidos.get(3).substring(0, escolhidos.get(3).length()-1));
+			cinco.setText(escolhidos.get(4).substring(0, escolhidos.get(4).length()-1));
 			break;
 		}
 		

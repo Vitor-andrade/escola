@@ -25,18 +25,20 @@ import mensagens.MaximoTurmas;
 
 public class CadastroDeMatricula {
 
-	private JFrame frame;
+	public static JFrame frame;
 	private String selecionaDisciplina = null;
+	private String selecionaCurso = null;
 	private List<String> escolhidos = new ArrayList<>();
+	private Aluno estudante;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void CadastroDeMatricula() {
+	public static void CadastroDeMatricula(Aluno estudante1) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					CadastroDeMatricula window = new CadastroDeMatricula();
+					CadastroDeMatricula window = new CadastroDeMatricula(estudante1);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -48,7 +50,8 @@ public class CadastroDeMatricula {
 	/**
 	 * Create the application.
 	 */
-	public CadastroDeMatricula() {
+	public CadastroDeMatricula(Aluno estudante1) {
+		estudante = estudante1;
 		initialize();
 	}
 
@@ -81,8 +84,8 @@ public class CadastroDeMatricula {
 		JButton btnNewButton = new JButton("Cadastrar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				ConfirmaTurmas.ConfirmaTurmas(escolhidos);
-				escolhidos=null;
+				ConfirmaTurmas.ConfirmaTurmas(escolhidos, estudante, selecionaCurso);
+				escolhidos = new ArrayList<>();
 			}
 		});
 		btnNewButton.setBackground(Color.LIGHT_GRAY);
@@ -117,9 +120,9 @@ public class CadastroDeMatricula {
 			curso.addMouseListener(new MouseAdapter() {
 		        @SuppressWarnings("unchecked")
 				public void mouseClicked(MouseEvent e) {
-		        	String selecionaCurso = curso.getSelectedValue().toString();
+		        	selecionaCurso = curso.getSelectedValue().toString();
 		        	try {
-						disciplina.setListData(Disciplina.getDisciplinas(selecionaCurso));
+						disciplina.setListData(Disciplina.getDisciplinas(selecionaCurso, 0));
 						turmaa.setEnabled(false);
 					} catch (SQLException e1) {
 						// TODO Auto-generated catch block
@@ -160,7 +163,13 @@ public class CadastroDeMatricula {
 				}else if(escolhidos.size()==5){
 					MaximoTurmas.MaximoTurmas();
 				}else{
-					escolhidos.add(selecionaDisciplina);
+					try {
+						selecionaDisciplina+= String.valueOf(Turma.getId(selecionaDisciplina));
+						escolhidos.add(selecionaDisciplina);
+						mensagens.Sucesso.Sucesso();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
 				}
 			}
 		});
