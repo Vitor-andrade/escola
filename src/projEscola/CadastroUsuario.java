@@ -101,7 +101,7 @@ public class CadastroUsuario {
 				}
 			}
 		});
-		btnNewButton.setBounds(164, 284, 108, 23);
+		btnNewButton.setBounds(81, 284, 108, 23);
 		btnNewButton.setBackground(Color.LIGHT_GRAY);
 		btnNewButton.setFont(new Font("Arial", Font.PLAIN, 13));
 		frame.getContentPane().add(btnNewButton);
@@ -144,5 +144,14 @@ public class CadastroUsuario {
 		lblSelecioneSeuTipo.setFont(new Font("Arial", Font.BOLD, 12));
 		lblSelecioneSeuTipo.setBounds(105, 202, 167, 14);
 		frame.getContentPane().add(lblSelecioneSeuTipo);
+		
+		JButton btnNewButton_1 = new JButton("Log out");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		btnNewButton_1.setFont(new Font("Arial", Font.PLAIN, 13));
+		btnNewButton_1.setBounds(227, 284, 96, 24);
+		frame.getContentPane().add(btnNewButton_1);
 	}
 }
