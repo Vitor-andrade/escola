@@ -53,6 +53,9 @@ public class DisciplinaBD {
 	        for (int columnIndex = 1; columnIndex <= columnCount; columnIndex++) {
 	            vector.add(result.getObject(columnIndex));
 	        }
+	        if(data.contains(vector)){
+	        	continue;
+	        }
 	        data.add(vector);
 	    }
 
@@ -79,6 +82,9 @@ public class DisciplinaBD {
 	        Vector<Object> vector = new Vector<Object>();
 	        for (int columnIndex = 1; columnIndex <= columnCount; columnIndex++) {
 	            vector.add(result.getObject(columnIndex));
+	        }
+	        if(data.contains(vector)){
+	        	continue;
 	        }
 	        data.add(vector);
 	    }

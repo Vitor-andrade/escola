@@ -59,7 +59,7 @@ public class BemVindoProfessor {
 		frame.getContentPane().setLayout(null);
 		
 		JLabel lblDados = new JLabel("Dados");
-		lblDados.setBounds(48, 88, 171, 40);
+		lblDados.setBounds(48, 126, 171, 40);
 		frame.getContentPane().add(lblDados);
 		
 		JLabel lblNewLabel = new JLabel("Turmas");
@@ -68,7 +68,7 @@ public class BemVindoProfessor {
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-		scrollPane.setBounds(48, 126, 171, 210);
+		scrollPane.setBounds(48, 160, 171, 130);
 		frame.getContentPane().add(scrollPane);
 		
 		Vector<String> info = new Vector<String>();
@@ -82,7 +82,7 @@ public class BemVindoProfessor {
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
 		scrollPane_1.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-		scrollPane_1.setBounds(488, 126, 171, 210);
+		scrollPane_1.setBounds(384, 126, 275, 210);
 		frame.getContentPane().add(scrollPane_1);
 		
 		JList<?> turmas;

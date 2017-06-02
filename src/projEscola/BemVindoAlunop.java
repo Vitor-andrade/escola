@@ -68,16 +68,16 @@ public class BemVindoAlunop {
 		frame.getContentPane().add(btnNewButton);
 		
 		JLabel lblDados = new JLabel("Dados");
-		lblDados.setBounds(50, 100, 46, 14);
+		lblDados.setBounds(50, 125, 46, 14);
 		frame.getContentPane().add(lblDados);
 		
 		JLabel lblNewLabel = new JLabel("Turmas");
-		lblNewLabel.setBounds(556, 100, 46, 14);
+		lblNewLabel.setBounds(532, 99, 46, 14);
 		frame.getContentPane().add(lblNewLabel);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-		scrollPane.setBounds(50, 125, 195, 207);
+		scrollPane.setBounds(50, 150, 195, 143);
 		frame.getContentPane().add(scrollPane);
 		
 		Vector<String> info = new Vector<String>();
@@ -91,7 +91,7 @@ public class BemVindoAlunop {
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
 		scrollPane_1.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-		scrollPane_1.setBounds(556, 125, 171, 207);
+		scrollPane_1.setBounds(532, 125, 195, 207);
 		frame.getContentPane().add(scrollPane_1);
 		
 		JList<?> turmas;

@@ -95,7 +95,7 @@ public class CadastroTurma {
 		JButton btnCadastrar = new JButton("Cadastrar");
 		btnCadastrar.setBackground(Color.LIGHT_GRAY);
 		btnCadastrar.setForeground(Color.BLACK);
-		btnCadastrar.setBounds(371, 446, 89, 23);
+		btnCadastrar.setBounds(361, 446, 99, 23);
 		frame.getContentPane().add(btnCadastrar);
 		
 		JLabel lblCadastroDeTurma = new JLabel("Cadastro de Turma");
