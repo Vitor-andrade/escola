@@ -18,6 +18,15 @@ public class Disciplina {
 		return arruma;
 	}
 	
+	static Vector getDisciplinasComCurso(String matriculaP) throws SQLException{
+		Vector disciplinas = new DisciplinaBD().getDisciplinasComCurso(matriculaP);
+		Vector<String> arruma = new Vector<String>();
+		for(int i=0;i<disciplinas.size();i++){
+			arruma.insertElementAt(disciplinas.elementAt(i).toString().substring(1, disciplinas.elementAt(i).toString().length()-1), i);
+		}
+		return arruma;
+	}
+	
 	static void setDisciplina (String matricula, String curso, String disciplina) throws SQLException {
 		DisciplinaBD.setDisciplina (matricula,  curso,  disciplina);
 		

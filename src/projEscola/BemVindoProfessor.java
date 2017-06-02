@@ -12,21 +12,26 @@ import javax.swing.JScrollBar;
 import java.awt.Button;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.util.Vector;
 import java.awt.event.ActionEvent;
+import javax.swing.JList;
+import javax.swing.ScrollPaneConstants;
 
 public class BemVindoProfessor {
 
 	private JFrame frame;
+	private Professor teacher;
 
 	/**
 	 * Launch the application.
 	 * @param teacher 
 	 */
-	public static void BemVindoProfessor(Professor teacher) {
+	public static void BemVindoProfessor(Professor teacher1) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					BemVindoProfessor window = new BemVindoProfessor();
+					BemVindoProfessor window = new BemVindoProfessor(teacher1);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -38,7 +43,8 @@ public class BemVindoProfessor {
 	/**
 	 * Create the application.
 	 */
-	public BemVindoProfessor() {
+	public BemVindoProfessor(Professor teacher1) {
+		teacher = teacher1;
 		initialize();
 	}
 
@@ -61,15 +67,32 @@ public class BemVindoProfessor {
 		frame.getContentPane().add(lblNewLabel);
 		
 		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPane.setBounds(48, 126, 171, 210);
 		frame.getContentPane().add(scrollPane);
 		
+		Vector<String> info = new Vector<String>();
+		info.addElement("Nome do Professor:");
+		info.addElement(teacher.nome);
+		info.addElement(" ");
+		info.addElement("Matrícula:");
+		info.addElement(teacher.getMatricula());
+		JList<?> dados = new JList<Object>(info);
+		scrollPane.setViewportView(dados);
+		
 		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPane_1.setBounds(488, 126, 171, 210);
 		frame.getContentPane().add(scrollPane_1);
 		
-		JScrollBar scrollBar_1 = new JScrollBar();
-		scrollPane_1.setRowHeaderView(scrollBar_1);
+		JList<?> turmas;
+		try {
+			turmas = new JList<Object>(Disciplina.getDisciplinasComCurso(teacher.getMatricula()));
+			scrollPane_1.setViewportView(turmas);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		JLabel lblBemVindoProfessor = new JLabel("Bem Vindo, Professor!");
 		lblBemVindoProfessor.setFont(new Font("Arial", Font.BOLD, 20));
@@ -86,7 +109,7 @@ public class BemVindoProfessor {
 				CadastroTurma.CadastroTurma();
 			}
 		});
-		btnNewButton_1.setBounds(80, 397, 89, 23);
+		btnNewButton_1.setBounds(80, 397, 110, 23);
 		frame.getContentPane().add(btnNewButton_1);
 	}
 }

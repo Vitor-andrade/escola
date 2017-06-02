@@ -60,6 +60,33 @@ public class DisciplinaBD {
 
 	}
 	
+	public Vector getDisciplinasComCurso(String matriculaP) throws SQLException {
+		
+		stmt = this.con.prepareStatement("select x.disciplina, x.curso from escola.materias x where x.matriculaP like '"+matriculaP+"'");
+		ResultSet result = stmt.executeQuery();
+	    ResultSetMetaData metaData = (ResultSetMetaData) result.getMetaData();
+	    
+	    // Cabeçário
+	    Vector<String> columnNames = new Vector<String>();
+	    int columnCount = metaData.getColumnCount();
+	    for (int column = 1; column <= columnCount; column++) {
+	        columnNames.add(metaData.getColumnName(column));
+	    }
+
+	    // Data
+	    Vector<Vector<Object>> data = new Vector<Vector<Object>>();
+	    while (result.next()) {
+	        Vector<Object> vector = new Vector<Object>();
+	        for (int columnIndex = 1; columnIndex <= columnCount; columnIndex++) {
+	            vector.add(result.getObject(columnIndex));
+	        }
+	        data.add(vector);
+	    }
+
+	    return data;
+
+	}
+	
 	static void setDisciplina (String matricula, String curso, String disciplina) throws SQLException {
 		con = DriverManager.getConnection(url, "user", "password");
 		stmt = con.prepareStatement("select * from escola.meterias");
