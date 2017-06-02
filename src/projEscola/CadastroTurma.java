@@ -19,21 +19,25 @@ import java.awt.Color;
 import javax.swing.JTable;
 import javax.swing.JList;
 import javax.swing.ScrollPaneConstants;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class CadastroTurma {
 
-	private JFrame frame;
+	private static JFrame frame;
 	private JTextField textField;
 	private JTextField textField_1;
+	private Professor teacher;
 
 	/**
 	 * Launch the application.
+	 * @param teacher 
 	 */
-	public static void CadastroTurma() {
+	public static void CadastroTurma(Professor teacher1) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					CadastroTurma window = new CadastroTurma();
+					CadastroTurma window = new CadastroTurma(teacher1);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -45,7 +49,8 @@ public class CadastroTurma {
 	/**
 	 * Create the application.
 	 */
-	public CadastroTurma() {
+	public CadastroTurma(Professor teacher1) {
+		teacher = teacher1;
 		initialize();
 	}
 
@@ -95,7 +100,7 @@ public class CadastroTurma {
 		JButton btnCadastrar = new JButton("Cadastrar");
 		btnCadastrar.setBackground(Color.LIGHT_GRAY);
 		btnCadastrar.setForeground(Color.BLACK);
-		btnCadastrar.setBounds(371, 446, 89, 23);
+		btnCadastrar.setBounds(435, 446, 89, 23);
 		frame.getContentPane().add(btnCadastrar);
 		
 		JLabel lblCadastroDeTurma = new JLabel("Cadastro de Turma");
@@ -118,6 +123,16 @@ public class CadastroTurma {
 			scrollPane.setViewportView(curso);
         	JList disciplina = new JList(Disciplina.getDisciplinas("%%", 0));
 			scrollPane_1.setViewportView(disciplina);
+			
+			JButton voltar = new JButton("Voltar");
+			voltar.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					CadastroTurma.frame.setVisible(false);
+					BemVindoProfessor.BemVindoProfessor(teacher);;
+				}
+			});
+			voltar.setBounds(68, 446, 89, 23);
+			frame.getContentPane().add(voltar);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

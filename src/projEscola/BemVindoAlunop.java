@@ -19,7 +19,7 @@ import javax.swing.ScrollPaneConstants;
 
 public class BemVindoAlunop {
 
-	private JFrame frame;
+	private static JFrame frame;
 	private Aluno estudante;
 
 	/**
@@ -60,6 +60,8 @@ public class BemVindoAlunop {
 		JButton btnNewButton = new JButton("Log Out");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				BemVindoAlunop.frame.setVisible(false);
+				LoginUsuario.frame.setVisible(true);
 			}
 		});
 		btnNewButton.setBackground(Color.LIGHT_GRAY);

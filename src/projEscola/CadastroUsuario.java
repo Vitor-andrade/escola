@@ -19,7 +19,7 @@ import mensagens.Sucesso;
 
 public class CadastroUsuario {
 
-	private JFrame frame;
+	private static JFrame frame;
 	private JPasswordField senha;
 	private JTextField nome;
 	private JTextField matricula;
@@ -148,6 +148,8 @@ public class CadastroUsuario {
 		JButton btnNewButton_1 = new JButton("Log out");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				CadastroUsuario.frame.setVisible(false);
+				LoginUsuario.frame.setVisible(true);
 			}
 		});
 		btnNewButton_1.setFont(new Font("Arial", Font.PLAIN, 13));

@@ -20,7 +20,7 @@ import javax.swing.ScrollPaneConstants;
 
 public class BemVindoProfessor {
 
-	private JFrame frame;
+	private static JFrame frame;
 	private Professor teacher;
 
 	/**
@@ -100,13 +100,19 @@ public class BemVindoProfessor {
 		frame.getContentPane().add(lblBemVindoProfessor);
 		
 		JButton btnNewButton = new JButton("Log Out");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				BemVindoProfessor.frame.setVisible(false);
+				LoginUsuario.frame.setVisible(true);
+			}
+		});
 		btnNewButton.setBounds(522, 397, 89, 23);
 		frame.getContentPane().add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Nova Turma");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				CadastroTurma.CadastroTurma();
+				CadastroTurma.CadastroTurma(teacher);
 			}
 		});
 		btnNewButton_1.setBounds(80, 397, 110, 23);
