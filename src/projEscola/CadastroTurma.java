@@ -98,6 +98,10 @@ public class CadastroTurma {
 		frame.getContentPane().add(lblNewLabel);
 		
 		JButton btnCadastrar = new JButton("Cadastrar");
+		btnCadastrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
 		btnCadastrar.setBackground(Color.LIGHT_GRAY);
 		btnCadastrar.setForeground(Color.BLACK);
 		btnCadastrar.setBounds(361, 446, 99, 23);

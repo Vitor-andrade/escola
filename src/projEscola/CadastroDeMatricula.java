@@ -89,7 +89,7 @@ public class CadastroDeMatricula {
 			}
 		});
 		btnNewButton.setBackground(Color.LIGHT_GRAY);
-		btnNewButton.setBounds(486, 421, 106, 30);
+		btnNewButton.setBounds(363, 421, 106, 30);
 		frame.getContentPane().add(btnNewButton);
 		
 		JLabel lblCurso = new JLabel("Curso");
@@ -173,7 +173,17 @@ public class CadastroDeMatricula {
 				}
 			}
 		});
-		btnNewButton_1.setBounds(200, 421, 151, 30);
+		btnNewButton_1.setBounds(85, 421, 151, 30);
 		frame.getContentPane().add(btnNewButton_1);
+		
+		JButton retornar = new JButton("Retornar");
+		retornar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				CadastroDeMatricula.frame.setVisible(false);
+				LoginUsuario.frame.setVisible(true);
+			}
+		});
+		retornar.setBounds(618, 425, 89, 23);
+		frame.getContentPane().add(retornar);
 	}
 }
