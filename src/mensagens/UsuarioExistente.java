@@ -10,18 +10,18 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class MaximoTurmas {
+public class UsuarioExistente {
 
 	private static JFrame frame;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void MaximoTurmas() {
+	public static void UsuarioExistente() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MaximoTurmas window = new MaximoTurmas();
+					UsuarioExistente window = new UsuarioExistente();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -33,7 +33,7 @@ public class MaximoTurmas {
 	/**
 	 * Create the application.
 	 */
-	public MaximoTurmas() {
+	public UsuarioExistente() {
 		initialize();
 	}
 
@@ -46,26 +46,19 @@ public class MaximoTurmas {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JLabel lblVocJSelecionou = new JLabel("Voc\u00EA atingiu seu m\u00E1ximo");
-		lblVocJSelecionou.setFont(new Font("Arial", Font.PLAIN, 24));
-		lblVocJSelecionou.setForeground(Color.RED);
-		lblVocJSelecionou.setBounds(89, 30, 289, 66);
-		frame.getContentPane().add(lblVocJSelecionou);
-		
-		JLabel lblCursos = new JLabel("de sele\u00E7\u00F5es");
-		lblCursos.setForeground(Color.RED);
-		lblCursos.setFont(new Font("Arial", Font.PLAIN, 24));
-		lblCursos.setBounds(154, 89, 154, 26);
-		frame.getContentPane().add(lblCursos);
+		JLabel lblUsurioJExuste = new JLabel("Matricula j\u00E1 utilizada");
+		lblUsurioJExuste.setFont(new Font("Arial", Font.PLAIN, 24));
+		lblUsurioJExuste.setForeground(Color.RED);
+		lblUsurioJExuste.setBounds(110, 45, 232, 72);
+		frame.getContentPane().add(lblUsurioJExuste);
 		
 		JButton btnNewButton = new JButton("Okay");
 		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				MaximoTurmas.frame.setVisible(false);
+			public void actionPerformed(ActionEvent arg0) {
+				UsuarioExistente.frame.setVisible(false);
 			}
 		});
-		btnNewButton.setBounds(169, 160, 89, 58);
+		btnNewButton.setBounds(168, 157, 96, 54);
 		frame.getContentPane().add(btnNewButton);
 	}
-
 }

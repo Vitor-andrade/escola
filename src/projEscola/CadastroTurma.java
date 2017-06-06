@@ -25,8 +25,10 @@ import java.awt.event.ActionEvent;
 public class CadastroTurma {
 
 	private static JFrame frame;
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField textCurso;
+	private JTextField textDisciplina;
+	private JList curso;
+	private JList disciplina;
 	private Professor teacher;
 
 	/**
@@ -77,20 +79,22 @@ public class CadastroTurma {
 		horizontalStrut.setBounds(288, 163, 236, 1);
 		frame.getContentPane().add(horizontalStrut);
 		
-		textField = new JTextField();
-		textField.setBounds(68, 380, 168, 39);
-		frame.getContentPane().add(textField);
-		textField.setColumns(10);
+		textCurso = new JTextField();
+		textCurso.setBounds(68, 380, 168, 39);
+		frame.getContentPane().add(textCurso);
+		textCurso.setColumns(10);
+		textCurso.setText("");
 		
 		JLabel lblOferecerCurso = new JLabel("Oferecer Curso Novo");
 		lblOferecerCurso.setFont(new Font("Arial", Font.BOLD, 13));
 		lblOferecerCurso.setBounds(68, 355, 167, 14);
 		frame.getContentPane().add(lblOferecerCurso);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(576, 380, 168, 39);
-		frame.getContentPane().add(textField_1);
-		textField_1.setColumns(10);
+		textDisciplina = new JTextField();
+		textDisciplina.setBounds(576, 380, 168, 39);
+		frame.getContentPane().add(textDisciplina);
+		textDisciplina.setColumns(10);
+		textDisciplina.setText("");
 		
 		JLabel lblNewLabel = new JLabel("Oferecer Disciplina Nova");
 		lblNewLabel.setFont(new Font("Arial", Font.BOLD, 13));
@@ -100,6 +104,29 @@ public class CadastroTurma {
 		JButton btnCadastrar = new JButton("Cadastrar");
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				try {
+					if(Professor.getQtd(teacher.getMatricula())==8){
+						mensagens.MaximoTurmas.MaximoTurmas();
+					} else {
+						if(textCurso.getText().equals("")&&textDisciplina.getText().equals("")){
+							Professor.cadastraTurma(teacher.getMatricula(), curso.getSelectedValue().toString(), disciplina.getSelectedValue().toString());
+							mensagens.Sucesso.Sucesso();
+						} else if(!textCurso.getText().equals("")&&textDisciplina.getText().equals("")){
+							Professor.cadastraTurma(teacher.getMatricula(), textCurso.getText(), disciplina.getSelectedValue().toString());
+							mensagens.Sucesso.Sucesso();
+						} else if(textCurso.getText().equals("")&&!textDisciplina.getText().equals("")){
+							Professor.cadastraTurma(teacher.getMatricula(), curso.getSelectedValue().toString(), textDisciplina.getText());
+							mensagens.Sucesso.Sucesso();
+						} else if(!textCurso.getText().equals("")&&!textDisciplina.getText().equals("")){
+							Professor.cadastraTurma(teacher.getMatricula(), textCurso.getText(), textDisciplina.getText());
+							mensagens.Sucesso.Sucesso();
+						}
+					}
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					mensagens.FaltaSelecao.FaltaSelecao();
+					e.printStackTrace();
+				}
 			}
 		});
 		btnCadastrar.setBackground(Color.LIGHT_GRAY);
@@ -123,9 +150,9 @@ public class CadastroTurma {
 		frame.getContentPane().add(scrollPane_1);
 		
 		try {
-			JList curso = new JList(Curso.getCursos());
+			curso = new JList(Curso.getCursos());
 			scrollPane.setViewportView(curso);
-        	JList disciplina = new JList(Disciplina.getDisciplinas("%%", 0));
+        	disciplina = new JList(Disciplina.getDisciplinas("%%", 0));
 			scrollPane_1.setViewportView(disciplina);
 			
 			JButton voltar = new JButton("Voltar");

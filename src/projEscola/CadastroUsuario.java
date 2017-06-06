@@ -97,6 +97,7 @@ public class CadastroUsuario {
 					}
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
+					mensagens.UsuarioExistente.UsuarioExistente();
 					e.printStackTrace();
 				}
 			}
