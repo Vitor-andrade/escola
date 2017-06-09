@@ -63,7 +63,9 @@ public class LoginUsuario {
 			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent e) {
 				try {
-					if(Pessoa.validaSenha(txtsdgadsfh.getText(), passwordField.getText())){
+					if(txtsdgadsfh.getText().length()!=8){
+						mensagens.MenosDeOito.MenosDeOito();
+					}else if(Pessoa.validaSenha(txtsdgadsfh.getText(), passwordField.getText())){
 						if(Pessoa.getPerfilUsuario(txtsdgadsfh.getText())==1){
 							// Professor autorizado
 							Professor teacher = new Professor();
@@ -87,6 +89,8 @@ public class LoginUsuario {
 							CadastroUsuario.cadastraUsuario();
 						}
 						LoginUsuario.frame.setVisible(false);
+					}else{
+						mensagens.Falha.Falha();
 					}
 				} catch (Exception e1) {
 					e1.printStackTrace();
